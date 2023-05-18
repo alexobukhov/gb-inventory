@@ -1,18 +1,24 @@
 package ru.gb.inventory.itactive.services;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import ru.gb.inventory.itactive.dto.ProducerDto;
 import ru.gb.inventory.itactive.entities.Producer;
-import ru.gb.inventory.itactive.repositories.ProducerRepository;
 
+import java.util.List;
 import java.util.Optional;
 
-@Service
-@RequiredArgsConstructor
-public class ProducerService {
-    private final ProducerRepository producerRepository;
 
-    public Optional<Producer> findByTitle(String title) {
-        return producerRepository.findByTitle(title);
-    }
+public interface ProducerService {
+
+//    Optional<Producer> findByTitle(String title);
+
+    Optional<Producer> findById(Long id);
+
+    List<Producer> findAll();
+
+    void addNewProducer(ProducerDto producerDto);
+
+//    void deleteByTitle(String title);
+
+    void deleteById(Long id);
+
 }

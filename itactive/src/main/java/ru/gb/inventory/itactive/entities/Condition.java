@@ -18,7 +18,7 @@ public class Condition {
     private Long id;
 
     @Column(name = "title")
-    private String condition;
+    private String title;
 
     @OneToMany(mappedBy = "condition")
     private List<ItActive> itActives;

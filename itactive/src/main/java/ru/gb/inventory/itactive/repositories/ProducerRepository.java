@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface ProducerRepository extends JpaRepository<Producer, Long>, JpaSpecificationExecutor<Producer> {
 
     Optional<Producer> findByTitle(String title);
+
+    void deleteByTitle(String title);
 }

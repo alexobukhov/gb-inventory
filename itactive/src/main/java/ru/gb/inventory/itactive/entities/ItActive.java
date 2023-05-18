@@ -19,8 +19,8 @@ public class ItActive {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "owner")
-    private Long owner;
+    @Column(name = "ownerId")
+    private Long ownerId;
 
     @ManyToOne
     @JoinColumn(name = "kind_id")
@@ -36,6 +36,9 @@ public class ItActive {
     @Column(name = "serialNumber")
     private String serialNumber;
 
+    @Column(name = "inventoryNumber")
+    private String inventoryNumber;
+
     @ManyToOne
     @JoinColumn(name = "condition_id")
     private Condition condition;
@@ -50,7 +53,6 @@ public class ItActive {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
 
 
 }

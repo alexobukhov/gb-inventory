@@ -19,3 +19,10 @@ spring:
       enabled: true
       settings:
         web-allow-others: false
+
+integrations:
+  user-service:
+    url: http://localhost:8190/user-service/
+    connect-timeout: 5000
+    read-timeout: 10000
+    write-timeout: 5000
