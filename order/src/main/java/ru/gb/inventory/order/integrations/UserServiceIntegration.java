@@ -1,9 +1,8 @@
-package ru.gb.inventory.itactive.integrations;
+package ru.gb.inventory.order.integrations;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import ru.gb.inventory.itactive.dto.UserDto;
 
 @Component
 @RequiredArgsConstructor
