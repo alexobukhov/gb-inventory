@@ -32,18 +32,10 @@ public class KindServiceImpl implements KindService {
         return kindRepository.findById(id);
     }
 
-    @Override
-    public Optional<Kind> findByTitle(String title) {
-        return kindRepository.findByTitle(title);
-    }
 
     @Override
     public void deleteById(Long id) {
         kindRepository.deleteById(id);
     }
 
-    @Override
-    public void deleteByTitle(String title) {
-        kindRepository.deleteByTitle(title);
-    }
 }

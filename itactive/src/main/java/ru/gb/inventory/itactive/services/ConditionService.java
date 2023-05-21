@@ -11,11 +11,9 @@ public interface ConditionService {
 
     Optional<Condition> findById(Long id);
 
-//    Optional<Condition> findByTitle(String title);
 
     void deleteById(Long id);
 
-//    void deleteByTitle(String title);
 
     void addNewCondition(ConditionDto conditionDto);
 }

@@ -26,18 +26,8 @@ public class ConditionServiceImpl implements ConditionService {
     }
 
     @Override
-    public Optional<Condition> findByTitle(String title) {
-        return conditionRepository.findByTitle(title);
-    }
-
-    @Override
     public void deleteById(Long id) {
         conditionRepository.deleteById(id);
-    }
-
-    @Override
-    public void deleteByTitle(String title) {
-        conditionRepository.deleteByTitle(title);
     }
 
     @Override

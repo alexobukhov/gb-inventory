@@ -1,5 +1,6 @@
 package ru.gb.inventory.itactive.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Producer {
     @Column(name = "title")
     private String title;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "producer")
     private List<ItActive> itActives;
 }

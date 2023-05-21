@@ -19,12 +19,12 @@ create table kinds
 create table actives
 (
     id              bigserial primary key,
-    ownerId         bigint,
+    owner_Id        bigint,
     kind_id         int         not null references kinds (id),
     producer_id     int         not null references producers (id),
     model           varchar(50) not null,
-    serialNumber    varchar(50) not null unique,
-    inventoryNumber bigserial   not null unique,
+    serial_number    varchar(50) not null unique,
+    inventory_number bigserial   not null unique,
     condition_id    int         not null references conditions (id),
     description     varchar(255) default 'null',
     created_at      timestamp    default current_timestamp,
@@ -55,5 +55,5 @@ values ('Системный блок'),
        ('Мышь'),
        ('Аудиогарнитура');
 
-insert into actives (kind_id, producer_id, model, serialNumber, condition_id)
-values (1, 1, 'AAA', '001', 1);
+insert into actives (owner_Id, kind_id, producer_id, model, serial_number, condition_id)
+values (1, 1, 1, 'AAA', '001', 1);
