@@ -11,16 +11,14 @@ public class UserServiceIntegration {
 
     private final WebClient userServiceWebClient;
 
+    public UserDto findUserById(Long id) {
+        return userServiceWebClient.get()
+                .uri("api/v1/users/{id}")
+                .retrieve()
+                .bodyToMono(UserDto.class)
+                .block();
+    }
 
-//    public UserDto getUserById(Long id) {
-//        return userServiceWebClient.get()
-//                .uri("api/v1/userService/0")
-//                .header("username", username)
-//                .retrieve()
-//                .bodyToMono(UserDto.class)
-//                .block();
-//    }
-//
 //    public void clearCart(String username) {
 //        userServiceWebClient.delete()
 //                .uri("api/v1/cart/0/clear")

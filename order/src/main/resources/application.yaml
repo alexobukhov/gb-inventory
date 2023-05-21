@@ -1,5 +1,5 @@
 server:
-  port: 8191
+  port: 8188
   servlet:
     context-path: /order-service
 
@@ -22,7 +22,7 @@ spring:
 
 integrations:
   user-service:
-    url: http://localhost:8190/user-service/
+    url: http://localhost:8189/user/
     connect-timeout: 5000
     read-timeout: 10000
     write-timeout: 5000
