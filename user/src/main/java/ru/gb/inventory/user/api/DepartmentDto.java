@@ -1,4 +1,4 @@
-package ru.gb.inventory.department.api;
+package ru.gb.inventory.user.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

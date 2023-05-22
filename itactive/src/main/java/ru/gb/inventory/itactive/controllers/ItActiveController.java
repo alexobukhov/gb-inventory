@@ -28,17 +28,24 @@ public class ItActiveController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("{activeId}/change/owner/{ownerId}")
+//    @GetMapping("/{activeId")
+//    public ItActiveDto findById(@PathVariable Long activeId) {
+//        return itActiveConverter.entityToDto(itActiveService.findByInventoryNumber())
+//    }
+
+    @PostMapping("/{activeId}/change/owner/{ownerId}")
     public void changeOwner(@PathVariable Long activeId, @PathVariable Long ownerId) {
         itActiveService.changeOwner(activeId, ownerId);
     }
 
-    @GetMapping("{ownerId}/findAll")
+    @GetMapping("/{ownerId}/findAll")
     public List<ItActiveDto> findAllByOwner(@PathVariable Long ownerId) {
         return itActiveService.findAllByOwner(ownerId)
                 .stream()
                 .map(itActiveConverter::entityToDto)
                 .collect(Collectors.toList());
     }
+
+
 
 }

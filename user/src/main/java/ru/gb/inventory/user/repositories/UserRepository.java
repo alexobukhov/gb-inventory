@@ -7,6 +7,7 @@ import ru.gb.inventory.user.entities.User;
 
 
 @Repository
-public interface UserRepositoty extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
+public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
+
 
 }

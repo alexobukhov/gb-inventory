@@ -8,30 +8,37 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gb.inventory.department.api.DepartmentDto;
 import ru.gb.inventory.department.api.ResourceNotFoundException;
+import ru.gb.inventory.department.converters.DepartmentConverter;
 import ru.gb.inventory.department.entyties.Department;
 import ru.gb.inventory.department.repositories.DepartmentRepository;
 import ru.gb.inventory.department.repositories.specifications.DepartmentSpecifications;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
+    private final DepartmentConverter departmentConverter;
 
-    public Page<Department> findAll(Specification<Department> specification, int pageIndex, int pageSize){
-        return departmentRepository.findAll(specification, PageRequest.of(pageIndex, pageSize));
+    public List<DepartmentDto> findAll(){
+        return departmentRepository.findAll()
+                .stream()
+                .map(departmentConverter::entityToDto)
+                .collect(Collectors.toList());
     }
 
-    public Specification<Department> createSpecByFilter(String titlePart){
-        Specification<Department> specification = Specification.where(null);
-
-        // select d from Department d where true and like &titlePart&
-        if(titlePart != null){
-            specification = specification.and(DepartmentSpecifications.titleLike(titlePart));
-        }
-        return specification;
-    }
+//    public Specification<Department> createSpecByFilter(String titlePart){
+//        Specification<Department> specification = Specification.where(null);
+//
+//        // select d from Department d where true and like &titlePart&
+//        if(titlePart != null){
+//            specification = specification.and(DepartmentSpecifications.titleLike(titlePart));
+//        }
+//        return specification;
+//    }
 
     public Optional<Department> findById(Long id){
         return departmentRepository.findById(id);

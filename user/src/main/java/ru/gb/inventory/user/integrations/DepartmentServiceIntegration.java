@@ -1,30 +1,40 @@
 package ru.gb.inventory.user.integrations;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import ru.gb.inventory.user.api.DepartmentDto;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DepartmentServiceIntegration {
+
+    @Qualifier("departmentServiceWebClient")
     private final WebClient departmentServiceWebClient;
 
-//    public DepartmentDto getCurrentDepartment(String username){
-//        return departmentServiceWebClient.get()
-//                .uri("api/V1/department/0")
-//                .header("username", username)
+    public List<DepartmentDto> getDepartments() {
+//        return (List<DepartmentDto>) departmentServiceWebClient.get()
+//                .uri("/api/V1/departments")
 //                .retrieve()
-//                .bodyToMono(DepartmentDto.class)
-//                .block();
-//    }
+//                .bodyToFlux(DepartmentDto.class)
+//                .blockLast();
 
-    public void clearDepartment(String username) {
-        departmentServiceWebClient.get()
-                .uri("api/V1/department/0/clear")
-                .header("username", username)
+        Flux<DepartmentDto> departmentDtoFlux = departmentServiceWebClient.get()
+                .uri("/api/v1/departments")
                 .retrieve()
-                .toBodilessEntity()
-                .block();
+                .bodyToFlux(DepartmentDto.class);
+
+        return departmentDtoFlux
+                .collect(Collectors.toList())
+                .share().block();
     }
+
+
 }

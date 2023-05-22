@@ -19,22 +19,14 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/V1/departments")
+@RequestMapping("/api/v1/departments")
 public class DepartmentController {
     private final DepartmentService departmentService;
     private final DepartmentConverter departmentConverter;
 
     @GetMapping
-    public Page<DepartmentDto> findAll(@RequestParam(defaultValue = "1", name = "p") int pageIndex,
-                                       @RequestParam(name = "titlePart", required = false) String titlePart
-    ){
-        if(pageIndex < 1){
-            pageIndex = 1;
-        }
-
-        Specification<Department> spec = departmentService.createSpecByFilter(titlePart);
-//        return productService.findAll(pageIndex - 1, 5).map(productConverter::entityToDto);
-        return departmentService.findAll(spec, pageIndex - 1, 5).map(departmentConverter::entityToDto);
+    public List<DepartmentDto> findAll(){
+        return departmentService.findAll();
     }
 
     @GetMapping("/{id}")
