@@ -46,9 +46,14 @@ public class UserController {
         userService.save(userDto);
     }
 
-    @GetMapping("/test")
+    @GetMapping("/test1")
     public List<DepartmentDto> getAllDepartments() {
         return departmentServiceIntegration.getDepartments();
+    }
+
+    @GetMapping("/test2/{id}")
+    public DepartmentDto getDepartmentById(@PathVariable Long id) {
+        return departmentServiceIntegration.getDepartmentById(id);
     }
 
 

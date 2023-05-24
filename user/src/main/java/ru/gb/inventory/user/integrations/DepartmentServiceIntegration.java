@@ -20,12 +20,6 @@ public class DepartmentServiceIntegration {
     private final WebClient departmentServiceWebClient;
 
     public List<DepartmentDto> getDepartments() {
-//        return (List<DepartmentDto>) departmentServiceWebClient.get()
-//                .uri("/api/V1/departments")
-//                .retrieve()
-//                .bodyToFlux(DepartmentDto.class)
-//                .blockLast();
-
         Flux<DepartmentDto> departmentDtoFlux = departmentServiceWebClient.get()
                 .uri("/api/v1/departments")
                 .retrieve()
@@ -35,6 +29,16 @@ public class DepartmentServiceIntegration {
                 .collect(Collectors.toList())
                 .share().block();
     }
+
+    public DepartmentDto getDepartmentById(Long id) {
+        return departmentServiceWebClient.get()
+                .uri(String.format("/api/v1/departments/%s", id))
+                .retrieve()
+                .bodyToMono(DepartmentDto.class)
+                .block();
+    }
+
+
 
 
 }
