@@ -1,25 +1,23 @@
 package ru.gb.inventory.user.services;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import ru.gb.inventory.user.api.UserDto;
 import ru.gb.inventory.user.entities.User;
-import ru.gb.inventory.user.repositories.UserRepositoty;
 
+import java.util.List;
 import java.util.Optional;
 
+public interface UserService {
 
-@Service
-@RequiredArgsConstructor
-@Slf4j
-public class UserService {
+    List<User> findAll();
 
-    @Autowired
-    private final UserRepositoty userRepository;
+    Optional<User> findById(Long id);
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
+    Optional<User> findByUserName(String username);
+
+
+    void deleteById(Long id);
+
+
+    void addNewUser(UserDto userDto);
 
 }
