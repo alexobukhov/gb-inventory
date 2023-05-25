@@ -20,5 +20,12 @@ public class UserConverter {
         return new UserDto(user.getId(), user.getUsername(), user.getEmail(), /*user.getJob().getTitle(),*/ user.getDepartment().getTitle());
     }
 
+    public User dtoToEntity(UserDto userDto) {
+        User user = new User();
+        user.setUsername(userDto.getUsername());
+        user.setEmail(userDto.getEmail());
+        return user;
+    }
+
 
 }

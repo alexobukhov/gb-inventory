@@ -9,7 +9,8 @@ import java.util.Optional;
 
 
 @Repository
-public interface UserRepositoty extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
+public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
+
 
     Optional<User> findByUserName(String userName);
 }

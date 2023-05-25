@@ -14,10 +14,6 @@ public interface KindService {
 
     Optional<Kind> findById(Long id);
 
-//    Optional<Kind> findByTitle(String title);
-
     void deleteById(Long id);
-
-//    void deleteByTitle(String title);
 
 }

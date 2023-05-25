@@ -38,8 +38,6 @@ public class ItActiveServiceImpl implements ItActiveService {
         itActive.setProducer(itActiveDto.getProducer());
         itActive.setModel(itActiveDto.getModel());
         itActive.setSerialNumber(itActiveDto.getSerialNumber());
-        // inventory number??
-
         itActive.setCondition(itActiveDto.getCondition());
         itActive.setDescription(itActiveDto.getDescription());
     }

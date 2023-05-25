@@ -18,3 +18,15 @@ spring:
       enabled: true
       settings:
         web-allow-other: false
+
+integrations:
+  department-service:
+    url: http://localhost:8186/departments
+    read-timeout: 10000
+    write-timeout: 5000
+    connect-timeout: 5000
+  job-service:
+    url: http://localhost:8182/jobs
+    read-timeout: 10000
+    write-timeout: 5000
+    connect-timeout: 5000
