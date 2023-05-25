@@ -1,7 +1,7 @@
 server:
-  port: 8187
+  port: 8082
   servlet:
-    context-path: /itActive-service
+    context-path: /itactive
 
 spring:
   datasource:
