@@ -31,10 +31,7 @@ public class DepartmentController {
         if(pageIndex < 1){
             pageIndex = 1;
         }
-
-        Specification<Department> spec = departmentService.createSpecByFilter(titlePart);
-//        return productService.findAll(pageIndex - 1, 5).map(productConverter::entityToDto);
-        return departmentService.findAll(spec, pageIndex - 1, 5).map(departmentConverter::entityToDto);
+        return departmentService.findAll(pageIndex - 1, 5).map(departmentConverter::entityToDto);
     }
 
     @GetMapping("/{id}")

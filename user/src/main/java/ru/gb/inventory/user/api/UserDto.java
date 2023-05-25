@@ -1,8 +1,16 @@
 package ru.gb.inventory.user.api;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 
 public class UserDto{
 
@@ -17,67 +25,7 @@ public class UserDto{
     @Schema(description = "Подразделение", required = false, example = "Top management")
     private String departmentTitle;
 
-    public UserDto() {
+
+    public UserDto(Long id, String username, String email, String title) {
     }
-
-    public UserDto(Long id, String username, String email, String jobTitle, String departmentTitle) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.jobTitle = jobTitle;
-        this.departmentTitle = departmentTitle;
-
-    }
-
-    public UserDto(Long id, String username, /*, String jobTitle, String departmentTitle, */ String email) {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-   /* public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public String getDepartmentTitle() {
-        return departmentTitle;
-    }
-
-    public void setDepartmentTitle(String departmentTitle) {
-        this.departmentTitle = departmentTitle;
-    }*/
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-
-
-
-
-
-
-
 }

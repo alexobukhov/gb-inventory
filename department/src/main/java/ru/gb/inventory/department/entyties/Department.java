@@ -12,11 +12,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "departments")
 @Data
-@NoArgsConstructor
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
 
