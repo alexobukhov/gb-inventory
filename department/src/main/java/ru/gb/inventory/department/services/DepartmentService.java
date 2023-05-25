@@ -3,14 +3,12 @@ package ru.gb.inventory.department.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gb.inventory.department.api.DepartmentDto;
 import ru.gb.inventory.department.api.ResourceNotFoundException;
 import ru.gb.inventory.department.entyties.Department;
 import ru.gb.inventory.department.repositories.DepartmentRepository;
-import ru.gb.inventory.department.repositories.specifications.DepartmentSpecifications;
 
 import java.util.Optional;
 
@@ -19,18 +17,8 @@ import java.util.Optional;
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
 
-    public Page<Department> findAll(Specification<Department> specification, int pageIndex, int pageSize){
-        return departmentRepository.findAll(specification, PageRequest.of(pageIndex, pageSize));
-    }
-
-    public Specification<Department> createSpecByFilter(String titlePart){
-        Specification<Department> specification = Specification.where(null);
-
-        // select d from Department d where true and like &titlePart&
-        if(titlePart != null){
-            specification = specification.and(DepartmentSpecifications.titleLike(titlePart));
-        }
-        return specification;
+    public Page<Department> findAll(int pageIndex, int pageSize){
+        return departmentRepository.findAll(PageRequest.of(pageIndex, pageSize));
     }
 
     public Optional<Department> findById(Long id){

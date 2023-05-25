@@ -4,15 +4,19 @@ server:
     context-path: /departments
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
-    username: sa
-    password:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/departments
+    username: admin
+    password: 123
   jpa:
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+  sql:
+    init:
+      mode: always
+  schema-locations:
+    classpath*: database/initDB.sql
+  data-locations:
+    classpath*: database/populateDB.sql
   h2:
     console:
       enabled: true
@@ -20,7 +24,7 @@ spring:
         web-allow-other: false
 integrations:
   user-service:
-    url: http://localhost:8190/market-cart/
+    url: http://localhost:8190/user/
     read-timeout: 10000
     write-timeout: 5000
     connect-timeout: 5000
