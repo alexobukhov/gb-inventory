@@ -1,13 +1,4 @@
-create table users
-(
-    id            bigserial primary key,
-    username      varchar(50) not null,
-    id_job        bigint not null,
-    id_department bigint not null,
-    email         varchar(50) unique
-);
-
-insert into users (username, email)
+insert into users (username, job_id, department_id, email)
 values ('Иванов И.И.',1,1,'IvanovII@gmail.com'),
        ('Петров П.П.',2,4,'PetrovPP@gmail.com'),
        ('Сидоров С.С.',2,4,'SidorovSS@gmail.com'),

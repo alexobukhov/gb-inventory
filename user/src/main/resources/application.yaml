@@ -2,22 +2,21 @@ server:
   port: 8189
   servlet:
     context-path: /user
+
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/itActivities
+    driver-class-name: org.postgresql.Driver
+    username: root
+    password: 123
   jpa:
+    database: postgresql
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
-      settings:
-        web-allow-other: false
+  sql:
+    init:
+      mode: always
+#      schema-locations: classpath*:database/initDB.sql
+#      data-locations: classpath*:database/populateDB.sql
 
 integrations:
   department-service:

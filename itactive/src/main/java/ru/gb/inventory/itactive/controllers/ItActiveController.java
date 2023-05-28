@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.gb.inventory.itactive.converters.ItActiveConverter;
 import ru.gb.inventory.itactive.dto.ItActiveDto;
 import ru.gb.inventory.itactive.integrations.UserServiceIntegration;
-import ru.gb.inventory.itactive.services.ItActiveServiceImpl;
+import ru.gb.inventory.itactive.services.implementations.ItActiveServiceImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,7 +33,7 @@ public class ItActiveController {
 //        return itActiveConverter.entityToDto(itActiveService.findByInventoryNumber())
 //    }
 
-    @PostMapping("/{activeId}/change/owner/{ownerId}")
+    @PostMapping("/{activeId}/owner/change/{ownerId}")
     public void changeOwner(@PathVariable Long activeId, @PathVariable Long ownerId) {
         itActiveService.changeOwner(activeId, ownerId);
     }

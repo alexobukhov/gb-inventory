@@ -6,9 +6,9 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/itActivities
+    driver-class-name: org.postgresql.Driver
     username: root
     password: 123
-    driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
     show-sql: true

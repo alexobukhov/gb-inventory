@@ -1,4 +1,4 @@
-package ru.gb.inventory.user.services;
+package ru.gb.inventory.user.services.implementations;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +7,7 @@ import ru.gb.inventory.user.api.UserDto;
 import ru.gb.inventory.user.converters.UserConverter;
 import ru.gb.inventory.user.entities.User;
 import ru.gb.inventory.user.repositories.UserRepository;
+import ru.gb.inventory.user.services.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,9 +37,6 @@ public class UserServiceImpl implements UserService {
     public void save(UserDto userDto) {
         userRepository.save(userConverter.dtoToEntity(userDto));
     }
-
-
-
 
 
 }
