@@ -28,10 +28,6 @@ public class ItActiveController {
                 .collect(Collectors.toList());
     }
 
-//    @GetMapping("/{activeId")
-//    public ItActiveDto findById(@PathVariable Long activeId) {
-//        return itActiveConverter.entityToDto(itActiveService.findByInventoryNumber())
-//    }
 
     @PostMapping("/{activeId}/owner/change/{ownerId}")
     public void changeOwner(@PathVariable Long activeId, @PathVariable Long ownerId) {

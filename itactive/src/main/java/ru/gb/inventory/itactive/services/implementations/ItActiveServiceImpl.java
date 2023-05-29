@@ -59,6 +59,7 @@ public class ItActiveServiceImpl implements ItActiveService {
     public void changeOwner(Long id, Long ownerId) {
         ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
         itActive.setOwnerId(ownerId);
+
     }
 
     @Override

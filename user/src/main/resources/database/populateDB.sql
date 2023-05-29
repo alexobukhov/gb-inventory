@@ -1,11 +1,11 @@
-insert into users (username, job_id, department_id, email)
-values ('Иванов И.И.',1,1,'IvanovII@gmail.com'),
-       ('Петров П.П.',2,4,'PetrovPP@gmail.com'),
-       ('Сидоров С.С.',2,4,'SidorovSS@gmail.com'),
-       ('Иванов А.Е.',2,4,'IvanovAE@gmail.com'),
-       ('Степанов С.И.',2,4,'StepanovSI@gmail.com'),
-       ('Петров И.И.',2,4, 'PetrovII@gmail.com'),
-       ('Иванов Е.Н.',2,4,'IvanovEN@gmail.com'),
-       ('Петров П.И.',2,4,'PetroPI@gmail.com'),
-       ('Милованова И.И.',4,6,'MilovanovaII@gmail.com'),
-       ('Любимова В.Н.',2,4,'LubimovaVN@gmail.com');
+insert into users (lastName, firstName, middleName, grade, job_id, department_id, email)
+values ('Богданов', 'Леонтий', 'Евгеньевич', 1, 1, 1, 'BogdanovLE@gmail.com'),
+       ('Фадеев', 'Анатолий', 'Донатович', 2, 2, 4, 'FadeevAD@gmail.com'),
+       ('Устинов', 'Нинель', 'Романович', 3, 2, 4, 'UstinovYR@gmail.com'),
+       ('Лихачев', 'Донат', 'Арьемович', 4, 2, 4, 'LixachevDA@gmail.com'),
+       ('Комиссаров', 'Захар', 'Агафонович', 5, 2, 4, 'KomissarovZA@gmail.com'),
+       ('Савина', 'Адельфина', 'Ивановна', 6, 2, 4, 'SavinaAI@gmail.com'),
+       ('Максимова', 'Николь', 'Арсеньева', 7, 2, 4, 'MaximovaNA@gmail.com'),
+       ('Громова', 'Нора', 'Еремеевна', 8, 2, 4, 'GromovaNE@gmail.com'),
+       ('Ситникова', 'Злата', 'Валерьевна', 9, 2, 4, 'SitnikovaZV@gmail.com'),
+       ('Третьякова', 'Земфира', 'Максовна', 10, 2, 4, 'TretyakovaZM@gmail.com');

@@ -17,8 +17,17 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "firstName")
+    private String firstname;
+
+    @Column(name = "lastName")
+    private String lastname;
+
+    @Column(name = "middleName")
+    private String middlename;
+
+    @Column(name = "grade")
+    private Long grade;
 
     @JoinColumn(name = "job_id")
     private Long jobId;

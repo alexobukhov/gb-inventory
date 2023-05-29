@@ -13,8 +13,13 @@ public class UserDto{
     @Schema(description = "ID пользователя", required = true, example = "1")
     private Long id;
 
-    @Schema(description = "ФИО", required = true, example = "Иванов И.И.")
-    private String username;
+    private String firstName;
+
+    private String lastName;
+
+    private String middleName;
+
+    private Long grade;
 
     @Schema(description = "e-mail", required = true, example = "IvanovII@gmail.com")
     private String email;

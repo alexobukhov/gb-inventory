@@ -21,7 +21,7 @@ spring:
 
 integrations:
   user-service:
-    url: http://localhost:8189/user/
+    url: http://localhost:8085/user/
     connect-timeout: 5000
     read-timeout: 10000
     write-timeout: 5000

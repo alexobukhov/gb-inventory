@@ -1,5 +1,5 @@
 server:
-  port: 8182
+  port: 8083
   servlet:
     context-path: /jobs
 
@@ -21,7 +21,7 @@ spring:
 
 integrations:
   department-service:
-    url: http://localhost:8189/departments/
+    url: http://localhost:8081/departments/
     read-timeout: 10000
     write-timeout: 5000
     connect-timeout: 5000

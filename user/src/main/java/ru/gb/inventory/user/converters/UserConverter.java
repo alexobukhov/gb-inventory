@@ -19,7 +19,10 @@ public class UserConverter {
     public UserDto entityToDto(User user) {
         return new UserDto(
                 user.getId(),
-                user.getUsername(),
+                user.getFirstname(),
+                user.getLastname(),
+                user.getMiddlename(),
+                user.getGrade(),
                 user.getEmail(),
                 departmentServiceIntegration.getDepartmentById(user.getDepartmentId()),
                 jobServiceIntegration.getJobById(user.getJobId())
@@ -28,7 +31,10 @@ public class UserConverter {
 
     public User dtoToEntity(UserDto userDto) {
         User user = new User();
-        user.setUsername(userDto.getUsername());
+        user.setFirstname(userDto.getFirstName());
+        user.setLastname(userDto.getLastName());
+        user.setMiddlename(userDto.getMiddleName());
+        user.setGrade(userDto.getGrade());
         user.setEmail(userDto.getEmail());
         user.setDepartmentId(userDto.getDepartment().getId());
         user.setJobId(userDto.getJob().getId());

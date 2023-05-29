@@ -1,5 +1,5 @@
 server:
-  port: 8186
+  port: 8081
   servlet:
     context-path: /departments
 
@@ -21,7 +21,7 @@ spring:
 
 integrations:
   user-service:
-    url: http://localhost:8190/user/
+    url: http://localhost:8085/user/
     read-timeout: 10000
     write-timeout: 5000
     connect-timeout: 5000
