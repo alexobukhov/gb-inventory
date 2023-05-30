@@ -1,14 +1,14 @@
 server:
-  port: 8192
+  port: 8083
   servlet:
-    context-path: /jobs
+    context-path: /job
 
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/jobs
-    username: postgres
-    password: qqq
+    url: jdbc:postgresql://localhost:5483/job
+    username: job_user
+    password: job_admin
   jpa:
     show-sql: true
     properties:
