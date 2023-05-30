@@ -17,13 +17,13 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "firstName")
+    @Column(name = "firstname")
     private String firstname;
 
-    @Column(name = "lastName")
+    @Column(name = "lastname")
     private String lastname;
 
-    @Column(name = "middleName")
+    @Column(name = "middlename")
     private String middlename;
 
     @Column(name = "grade")

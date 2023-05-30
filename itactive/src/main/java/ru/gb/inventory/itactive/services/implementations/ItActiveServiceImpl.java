@@ -34,7 +34,7 @@ public class ItActiveServiceImpl implements ItActiveService {
     @Override
     public void addNewItActive(ItActiveDto itActiveDto) {
         ItActive itActive = new ItActive();
-        itActive.setOwnerId(itActiveDto.getOwner());
+        itActive.setOwnerId(itActiveDto.getOwner().getId());
         itActive.setKind(itActiveDto.getKind());
         itActive.setProducer(itActiveDto.getProducer());
         itActive.setModel(itActiveDto.getModel());

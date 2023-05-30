@@ -2,6 +2,7 @@ package ru.gb.inventory.itactive.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.gb.inventory.itactive.ItActiveApplication;
 import ru.gb.inventory.itactive.converters.ItActiveConverter;
 import ru.gb.inventory.itactive.dto.ItActiveDto;
 import ru.gb.inventory.itactive.integrations.UserServiceIntegration;
@@ -27,6 +28,12 @@ public class ItActiveController {
                 .map(itActiveConverter::entityToDto)
                 .collect(Collectors.toList());
     }
+
+    @GetMapping("{id}")
+    public ItActiveDto findById(@PathVariable Long id) {
+        return itActiveConverter.entityToDto(itActiveService.findById(id).get());
+    }
+
 
 
     @PostMapping("/{activeId}/owner/change/{ownerId}")
