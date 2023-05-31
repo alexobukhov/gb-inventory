@@ -1,22 +1,23 @@
 package ru.gb.inventory.department.integrations;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import ru.gb.inventory.department.api.UserDto;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserServiceIntegrations {
     private final WebClient userServiceWebClient;
 
-//    public UserDto getCurrentUser(String username){
-//        return userServiceWebClient.get()
-//                .uri("api/V1/user/0")
-//                .header("username", username)
-//                .retrieve()
-//                .bodyToMono(UserDto.class)
-//                .block();
-//    }
+
+    public UserDto getUserById(Long Id){
+        return userServiceWebClient.get()
+                .uri("api/V1/user/{id}")
+                .retrieve()
+                .bodyToMono(UserDto.class)
+                .block();
+    }
 
     public void clear(String username) {
         userServiceWebClient.get()
