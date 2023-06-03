@@ -2,10 +2,11 @@ package ru.gb.inventory.itactive.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.gb.inventory.itactive.ItActiveApplication;
 import ru.gb.inventory.itactive.converters.ItActiveConverter;
 import ru.gb.inventory.itactive.dto.ItActiveDto;
 import ru.gb.inventory.itactive.integrations.UserServiceIntegration;
-import ru.gb.inventory.itactive.services.ItActiveServiceImpl;
+import ru.gb.inventory.itactive.services.implementations.ItActiveServiceImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,12 +29,14 @@ public class ItActiveController {
                 .collect(Collectors.toList());
     }
 
-//    @GetMapping("/{activeId")
-//    public ItActiveDto findById(@PathVariable Long activeId) {
-//        return itActiveConverter.entityToDto(itActiveService.findByInventoryNumber())
-//    }
+    @GetMapping("{id}")
+    public ItActiveDto findById(@PathVariable Long id) {
+        return itActiveConverter.entityToDto(itActiveService.findById(id).get());
+    }
 
-    @PostMapping("/{activeId}/change/owner/{ownerId}")
+
+
+    @PostMapping("/{activeId}/owner/change/{ownerId}")
     public void changeOwner(@PathVariable Long activeId, @PathVariable Long ownerId) {
         itActiveService.changeOwner(activeId, ownerId);
     }

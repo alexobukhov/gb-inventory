@@ -1,51 +1,46 @@
 package ru.gb.inventory.job.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.gb.inventory.job.api.JobDTO;
-import ru.gb.inventory.job.services.JobService;
+import ru.gb.inventory.job.api.JobDto;
+import ru.gb.inventory.job.converters.JobConverter;
+import ru.gb.inventory.job.exceptions.ResourceNotFoundException;
+import ru.gb.inventory.job.services.JobServiceImpl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/api/v1/job")
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/jobs")
 public class JobController {
 
-    private final JobService jobService;
+    private final JobServiceImpl jobService;
+    private final JobConverter jobConverter;
 
     @GetMapping
-    public List<JobDTO> findAll(){
-        return jobService.findAll();
+    public List<JobDto> findAll() {
+        return jobService.findAll()
+                .stream()
+                .map(jobConverter::entityToDto)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public JobDTO findById(@PathVariable Long id){
-        Optional<JobDTO> job = jobService.findById(id); //.orElseThrow(() -> new ResourceNotFoundException("Job id: " + id + " not found"));
-        return job.orElse(null);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id){
-        jobService.deleteById(id);
+    public JobDto findById(@PathVariable Long id) {
+        return jobConverter.entityToDto(jobService.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Работа с id:%s не найдена", id))));
     }
 
     @PostMapping
-    public JobDTO save(@RequestBody @Validated JobDTO jobDTO, BindingResult bindingResult){
-//        if(bindingResult.hasErrors()){
-//            throw new DataValidationException(bindingResult.getAllErrors().stream().map(ObjectError::getDefaultMessage).collect(Collectors.toList()));
-//        }
-        return jobService.createJob(jobDTO);
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createNewJob(@RequestBody JobDto jobDto) {
+        jobService.addNewJob(jobDto);
     }
 
-//    @PutMapping
-//    public void updateDepartment(@RequestBody JobDTO jobDTO){
-//        jobService.updateFromDto(jobDTO);
-//    }
+    @DeleteMapping("/{id}")
+    public void deleteJobById(@PathVariable Long id) {
+        jobService.deleteById(id);
+    }
 
 }

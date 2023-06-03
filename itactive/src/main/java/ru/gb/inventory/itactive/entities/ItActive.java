@@ -20,7 +20,6 @@ public class ItActive {
     @Column(name = "id")
     private Long id;
 
-
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "kind_id")
@@ -35,7 +34,6 @@ public class ItActive {
     @ManyToOne
     @JoinColumn(name = "condition_id")
     private Condition condition;
-
 
     @Column(name = "owner_id")
     private Long ownerId;

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.gb.inventory.itactive.converters.ProducerConverter;
 import ru.gb.inventory.itactive.dto.ProducerDto;
 import ru.gb.inventory.itactive.exceptions.ResourceNotFoundException;
-import ru.gb.inventory.itactive.services.ProducerServiceImpl;
+import ru.gb.inventory.itactive.services.implementations.ProducerServiceImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
