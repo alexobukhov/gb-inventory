@@ -1,4 +1,4 @@
-package ru.gb.inventory.itactive.services;
+package ru.gb.inventory.itactive.services.implementations;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,7 @@ import ru.gb.inventory.itactive.dto.ProducerDto;
 import ru.gb.inventory.itactive.entities.ItActive;
 import ru.gb.inventory.itactive.exceptions.ResourceNotFoundException;
 import ru.gb.inventory.itactive.repositories.ItActiveRepository;
+import ru.gb.inventory.itactive.services.ItActiveService;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +34,7 @@ public class ItActiveServiceImpl implements ItActiveService {
     @Override
     public void addNewItActive(ItActiveDto itActiveDto) {
         ItActive itActive = new ItActive();
-        itActive.setOwnerId(itActiveDto.getOwner());
+        itActive.setOwnerId(itActiveDto.getOwner().getId());
         itActive.setKind(itActiveDto.getKind());
         itActive.setProducer(itActiveDto.getProducer());
         itActive.setModel(itActiveDto.getModel());
@@ -58,6 +59,7 @@ public class ItActiveServiceImpl implements ItActiveService {
     public void changeOwner(Long id, Long ownerId) {
         ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
         itActive.setOwnerId(ownerId);
+
     }
 
     @Override

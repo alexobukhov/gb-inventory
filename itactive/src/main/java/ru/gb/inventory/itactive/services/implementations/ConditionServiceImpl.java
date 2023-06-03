@@ -1,10 +1,11 @@
-package ru.gb.inventory.itactive.services;
+package ru.gb.inventory.itactive.services.implementations;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.gb.inventory.itactive.dto.ConditionDto;
 import ru.gb.inventory.itactive.entities.Condition;
 import ru.gb.inventory.itactive.repositories.ConditionRepository;
+import ru.gb.inventory.itactive.services.ConditionService;
 
 import java.util.List;
 import java.util.Optional;

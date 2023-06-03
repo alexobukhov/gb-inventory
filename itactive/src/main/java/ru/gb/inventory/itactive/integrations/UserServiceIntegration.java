@@ -19,13 +19,4 @@ public class UserServiceIntegration {
                 .block();
     }
 
-//    public void clearCart(String username) {
-//        userServiceWebClient.delete()
-//                .uri("api/v1/cart/0/clear")
-//                .header("username", username)
-//                .retrieve()
-//                .bodyToMono(Void.class)
-//                .block();
-//    }
-
 }

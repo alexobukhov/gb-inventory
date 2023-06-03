@@ -5,9 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.gb.inventory.itactive.converters.ConditionConverter;
 import ru.gb.inventory.itactive.dto.ConditionDto;
-import ru.gb.inventory.itactive.dto.KindDto;
 import ru.gb.inventory.itactive.exceptions.ResourceNotFoundException;
-import ru.gb.inventory.itactive.services.ConditionServiceImpl;
+import ru.gb.inventory.itactive.services.implementations.ConditionServiceImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
