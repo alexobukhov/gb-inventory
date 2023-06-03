@@ -6,9 +6,9 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/itActivities
+    driver-class-name: org.postgresql.Driver
     username: root
     password: 123
-    driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
     show-sql: true
@@ -21,7 +21,7 @@ spring:
 
 integrations:
   user-service:
-    url: http://localhost:8189/user/
+    url: http://localhost:8085/user/
     connect-timeout: 5000
     read-timeout: 10000
     write-timeout: 5000

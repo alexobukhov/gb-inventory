@@ -1,10 +1,14 @@
 package ru.gb.inventory.user.integrations;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import ru.gb.inventory.user.api.JobDto;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -14,21 +18,22 @@ public class JobServiceIntegration {
     @Qualifier("jobServiceWebClient")
     private final WebClient jobServiceWebClient;
 
-//   public JobDto getCurrentJob(String username){
-//        return jobServiceWebClient.get()
-//                .uri("api/V1/job/0")
-//                .header("username", username)
-//                .retrieve()
-//                .bodyToMono(JobDto.class)
-//                .block();
-//    }
-
-    public void clearJob(String username) {
-        jobServiceWebClient.get()
-                .uri("api/V1/job/0/clear")
-                .header("username", username)
+    public List<JobDto> getJobs() {
+        Flux<JobDto> jobDtoFlux = jobServiceWebClient.get()
+                .uri("/api/v1/job")
                 .retrieve()
-                .toBodilessEntity()
+                .bodyToFlux(JobDto.class);
+
+        return jobDtoFlux
+                .collect(Collectors.toList())
+                .share().block();
+    }
+
+    public JobDto getJobById(Long id) {
+        return jobServiceWebClient.get()
+                .uri(String.format("/api/v1/job/%s", id))
+                .retrieve()
+                .bodyToMono(JobDto.class)
                 .block();
     }
 

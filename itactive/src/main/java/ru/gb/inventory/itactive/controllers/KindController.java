@@ -26,7 +26,7 @@ public class KindController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public KindDto findById(@PathVariable Long id) {
         return kindConverter.entityToDto(kindService.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Kind with id:%s not found", id))));
     }
@@ -37,8 +37,8 @@ public class KindController {
         kindService.addNewKind(kindDto);
     }
 
-    @DeleteMapping("/id")
-    public void deleteKindById(@RequestParam Long id) {
+    @DeleteMapping("/{id}")
+    public void deleteKindById(@PathVariable Long id) {
         kindService.deleteById(id);
     }
 

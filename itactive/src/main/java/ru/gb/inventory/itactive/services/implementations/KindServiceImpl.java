@@ -1,10 +1,11 @@
-package ru.gb.inventory.itactive.services;
+package ru.gb.inventory.itactive.services.implementations;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.gb.inventory.itactive.dto.KindDto;
 import ru.gb.inventory.itactive.entities.Kind;
 import ru.gb.inventory.itactive.repositories.KindRepository;
+import ru.gb.inventory.itactive.services.KindService;
 
 import java.util.List;
 import java.util.Optional;
