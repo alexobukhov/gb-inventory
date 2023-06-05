@@ -1,22 +1,22 @@
-create table producers
+create table if not exists producers
 (
     id    bigserial primary key,
     title varchar(255) not null
 );
 
-create table conditions
+create table if not exists conditions
 (
     id    bigserial primary key,
     title varchar(255) not null
 );
 
-create table kinds
+create table if not exists kinds
 (
     id    bigserial primary key,
     title varchar(255) not null
 );
 
-create table actives
+create table if not exists actives
 (
     id              bigserial primary key,
     owner_Id        bigint,
