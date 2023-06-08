@@ -3,21 +3,21 @@ package ru.gb.inventory.user.api;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.gb.inventory.user.entities.User;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DepartmentDto {
+public class JobDto {
 
-    private Long id;
+    Long id;
 
-    private String title;
+    Long depId;
 
-    private List<User> users;
+    String title;
+
+    String description;
 
     private LocalDateTime createAt;
 

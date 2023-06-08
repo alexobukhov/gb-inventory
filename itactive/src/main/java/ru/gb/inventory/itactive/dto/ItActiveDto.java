@@ -14,7 +14,7 @@ public class ItActiveDto {
 
     private Long id;
 
-    private Long owner;
+    private UserDto owner;
 
     private Kind kind;
 
