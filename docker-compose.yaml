@@ -5,14 +5,22 @@ services:
     container_name: gateway
     build:
       context: .
-      dockerfile: ./dockerfile
+      dockerfile: ./apigateway/dockerfile
     ports:
       - "8080:8080"
     networks:
       - gb-inventory-net
 
+  web:
+    container_name: web_service
+    build:
+      context: .
+      dockerfile: ./web/dockerfile
+    networks:
+      - gb-inventory-net
+
   postgres:
-    container_name: postgres-db
+    container_name: postgresql
     image: postgres:15
     command:
       - "postgres"
@@ -45,27 +53,27 @@ services:
       - "-c"
       - "pg_stat_statements.track=all"
     environment:
-      POSTGRES_DB: gb-inventory
+      POSTGRES_DB: postgresql
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123
-      PGDATA: "/opt/data/postgresql/pgdata"
+      PGDATA: "./data/postgresql/pgdata"
     volumes:
       - ../2. Init Database:/docker-entrypoint-initdb.d
-        - postgres-db-data:/opt/data/postgresql
+        - postgresql-data:./data/postgresql
     ports:
       - "5432:5432"
     networks:
       - gb-inventory-net
 
   pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4:7.2
+    container_name: pgadmin_container
+    image: dpage/pgadmin4:7.3
     environment:
-      PGADMIN_DEFAULT_EMAIL: "root"
+      PGADMIN_DEFAULT_EMAIL: "root@mail.ru"
       PGADMIN_DEFAULT_PASSWORD: "123"
       PGADMIN_CONFIG_SERVER_MODE: "False"
     volumes:
-      - pgadmin-data:/opt/data/pgadmin
+      - pgadmin-data:./data/pgadmin
     ports:
       - "5050:80"
     restart: unless-stopped
@@ -81,90 +89,88 @@ services:
     container_name: auth
     build:
       context: .
-      dockerfile: ./dockerfile
+      dockerfile: ./auth/dockerfile
     ports:
       - "9000:9000"
     networks:
       - gb-inventory-net
     restart: always
-    depends_on:
-      - gateway
-      - postgres
+
 
   discovery:
      container_name: eureka
      build:
        context: .
-       dockerfile: ./dockerfile
-     ports:
-       - "8761:8761"
+       dockerfile: ./discovery/dockerfile
      networks:
        - gb-inventory-net
      restart: always
-     depends_on: auth-service
+
 
 
   department-service:
     container_name: department
     build:
       context: .
-      dockerfile: ./dockerfile
+      dockerfile: ./department/dockerfile
     ports:
       - "8081:8081"
     networks:
       - gb-inventory-net
     restart: always
-    depends_on: discovery
+
 
   itactive-service:
     container_name: itactive
     build:
       context: .
-      dockerfile: ./dockerfile
+      dockerfile: ./itactive/dockerfile
     ports:
       - "8082:8082"
     networks:
       - gb-inventory-net
     restart: always
-    depends_on: discovery
+
 
   job-service:
     container_name: job
     build:
       context: .
-      dockerfile: ./dockerfile
+      dockerfile: ./job/dockerfile
     ports:
       - "8083:8083"
     networks:
       - gb-inventory-net
     restart: always
-    depends_on: discovery
+
 
   order-service:
     container_name: order
     build:
       context: .
-      dockerfile: ./dockerfile
+      dockerfile: ./order/dockerfile
     ports:
       - "8084:8084"
     networks:
       - gb-inventory-net
     restart: always
-    depends_on: discovery
+
 
   user-service:
     container_name: user
     build:
       context: .
-      dockerfile: ./dockerfile
+      dockerfile: ./user/dockerfile
     ports:
       - "8085:8085"
     networks:
       - gb-inventory-net
     restart: always
-    depends_on: discovery
 
 
+volumes:
+  pgadmin-data:
+  postgresql-data:
 
 networks:
   gb-inventory-net:
