@@ -1,6 +1,6 @@
 package ru.gb.inventory.job.services.implementations;
 
-import ru.gb.inventory.job.api.JobDto;
+/*import ru.gb.inventory.job.api.JobDto;*/
 import ru.gb.inventory.job.entities.Job;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public interface JobService {
 
     Optional<Job> findById(Long id);
 
-    void addNewJob(JobDto jobDto);
+    /*void addNewJob(JobDto jobDto);*/
 
     void deleteById(Long id);
 }

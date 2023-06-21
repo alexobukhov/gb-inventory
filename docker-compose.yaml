@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 services:
 
   gateway:
@@ -10,17 +10,18 @@ services:
       - "8080:8080"
     networks:
       - gb-inventory-net
+    restart: always
 
-  web:
-    container_name: web_service
-    build:
-      context: .
-      dockerfile: ./web/dockerfile
-    networks:
-      - gb-inventory-net
+  #web:
+  #  container_name: web_service
+  #  build:
+  #    context: .
+  #    dockerfile: ./web/dockerfile
+  #  networks:
+  #    - gb-inventory-net
 
   postgres:
-    container_name: postgresql
+    container_name: postgresql-db
     image: postgres:15
     command:
       - "postgres"
@@ -53,15 +54,21 @@ services:
       - "-c"
       - "pg_stat_statements.track=all"
     environment:
-      POSTGRES_DB: postgresql
+      POSTGRES_DB: postgresql-db
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123
-      PGDATA: "./data/postgresql/pgdata"
+
     volumes:
-      - ../2. Init Database:/docker-entrypoint-initdb.d
-        - postgresql-data:./data/postgresql
+        - ../2. Init Database:/docker-entrypoint-initdb.d
+        - postgresql-db-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5435:5432"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 4G
     networks:
       - gb-inventory-net
 
@@ -73,7 +80,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: "123"
       PGADMIN_CONFIG_SERVER_MODE: "False"
     volumes:
-      - pgadmin-data:./data/pgadmin
+      - pgadmin-data:/var/lib/data/pgadmin
     ports:
       - "5050:80"
     restart: unless-stopped
@@ -170,7 +177,7 @@ services:
 
 volumes:
   pgadmin-data:
-  postgresql-data:
+  postgresql-db-data:
 
 networks:
   gb-inventory-net:

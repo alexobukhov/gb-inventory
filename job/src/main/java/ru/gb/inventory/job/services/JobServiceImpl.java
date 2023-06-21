@@ -2,7 +2,7 @@ package ru.gb.inventory.job.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.gb.inventory.job.api.JobDto;
+/*import ru.gb.inventory.job.api.JobDto;*/
 import ru.gb.inventory.job.converters.JobConverter;
 import ru.gb.inventory.job.entities.Job;
 import ru.gb.inventory.job.repositories.JobRepository;
@@ -28,14 +28,14 @@ public class JobServiceImpl implements JobService {
         return jobRepository.findById(id);
     }
 
-    @Override
+    /*@Override
     public void addNewJob(JobDto jobDto) {
         Job job = new Job();
         job.setTitle(jobDto.getTitle());
         job.setDepId(jobDto.getDepId());
         job.setDescription(jobDto.getDescription());
         jobRepository.save(job);
-    }
+    }*/
 
     @Override
     public void deleteById(Long id) {

@@ -1,13 +1,13 @@
 package ru.gb.inventory.job.converters;
 
 import org.springframework.stereotype.Component;
-import ru.gb.inventory.job.api.JobDto;
+/*import ru.gb.inventory.job.api.JobDto;*/
 import ru.gb.inventory.job.entities.Job;
 
 @Component
 public class JobConverter {
 
-    public JobDto entityToDto(Job job) {
+    /*public JobDto entityToDto(Job job) {
         return new JobDto(job.getId(), job.getDepId(), job.getTitle(), job.getDescription());
     }
 
@@ -18,5 +18,5 @@ public class JobConverter {
         job.setDepId(jobDTO.getDepId());
         job.setTitle(jobDTO.getTitle());
         return job;
-    }
+    }*/
 }
