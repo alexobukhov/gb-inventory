@@ -3,6 +3,7 @@ package ru.gb.inventory.job.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 /*import ru.gb.inventory.job.api.JobDto;*/
+import ru.gb.inventory.job.api.JobDto;
 import ru.gb.inventory.job.converters.JobConverter;
 import ru.gb.inventory.job.entities.Job;
 import ru.gb.inventory.job.repositories.JobRepository;
@@ -10,35 +11,46 @@ import ru.gb.inventory.job.services.implementations.JobService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class JobServiceImpl implements JobService {
 
     private final JobRepository jobRepository;
-    private final JobConverter jobConverter;
 
     @Override
-    public List<Job> findAll() {
-        return jobRepository.findAll();
+    public List<JobDto> findAll() {
+        return jobRepository.findAll()
+                .stream()
+                .map((Job job) -> JobConverter.jobToDto(Optional.ofNullable(job)))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Job> findById(Long id) {
-        return jobRepository.findById(id);
+    public Optional<JobDto> findById(Long id) {
+        return Optional.ofNullable(JobConverter.jobToDto(jobRepository.findById(id)));
     }
 
-    /*@Override
+    public List<JobDto> findAllByDepId(Long id) {
+        return jobRepository.findAllByDepId(id)
+                .stream()
+                .map((Job job) -> JobConverter.jobToDto(Optional.ofNullable(job)))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void addNewJob(JobDto jobDto) {
         Job job = new Job();
         job.setTitle(jobDto.getTitle());
         job.setDepId(jobDto.getDepId());
         job.setDescription(jobDto.getDescription());
         jobRepository.save(job);
-    }*/
+    }
 
     @Override
     public void deleteById(Long id) {
         jobRepository.deleteById(id);
     }
+
 }
