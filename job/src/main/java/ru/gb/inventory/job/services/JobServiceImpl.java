@@ -2,7 +2,6 @@ package ru.gb.inventory.job.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-/*import ru.gb.inventory.job.api.JobDto;*/
 import ru.gb.inventory.job.api.JobDto;
 import ru.gb.inventory.job.converters.JobConverter;
 import ru.gb.inventory.job.entities.Job;
@@ -18,6 +17,7 @@ import java.util.stream.Collectors;
 public class JobServiceImpl implements JobService {
 
     private final JobRepository jobRepository;
+    private final JobConverter jobConverter;
 
     @Override
     public List<JobDto> findAll() {
@@ -27,16 +27,16 @@ public class JobServiceImpl implements JobService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public Optional<JobDto> findById(Long id) {
-        return Optional.ofNullable(JobConverter.jobToDto(jobRepository.findById(id)));
-    }
-
     public List<JobDto> findAllByDepId(Long id) {
-        return jobRepository.findAllByDepId(id)
+        return jobRepository.findAllByDepId()
                 .stream()
                 .map((Job job) -> JobConverter.jobToDto(Optional.ofNullable(job)))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<JobDto> findById(Long id) {
+        return Optional.ofNullable(jobConverter.jobToDto(jobRepository.findById(id)));
     }
 
     @Override
@@ -52,5 +52,4 @@ public class JobServiceImpl implements JobService {
     public void deleteById(Long id) {
         jobRepository.deleteById(id);
     }
-
 }

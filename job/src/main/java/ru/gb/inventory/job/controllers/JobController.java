@@ -22,8 +22,13 @@ public class JobController {
     }
 
     @GetMapping("/{id}")
-    public Optional<JobDto> findById(@PathVariable Long id) {
+    public Optional<JobDto> findById(@PathVariable Long id){
         return jobService.findById(id);
+    }
+
+    @GetMapping("/dep/{id}")
+    public List<JobDto> findByDepId(@PathVariable Long id){
+        return jobService.findAllByDepId(id);
     }
 
     @PostMapping
