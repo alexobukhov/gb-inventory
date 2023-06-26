@@ -1,5 +1,6 @@
 package ru.gb.inventory.job.services.implementations;
 
+/*import ru.gb.inventory.job.api.JobDto;*/
 import ru.gb.inventory.job.api.JobDto;
 
 import java.util.List;

@@ -42,4 +42,9 @@ public class JobController {
         jobService.deleteById(id);
     }
 
+    @GetMapping("/dep/{id}")
+    public List<JobDto> findByDepId(@PathVariable Long id) {
+        return jobService.findAllByDepId(id);
+    }
+
 }

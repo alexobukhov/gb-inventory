@@ -16,12 +16,10 @@ public class JobConverter {
                 job.get().getDescription());
     }
 
-    public Job dtoToEntity(JobDto jobDTO) {
-        Job job = new Job();
-        job.setDescription(jobDTO.getDescription());
-        job.setId(jobDTO.getId());
-        job.setDepId(jobDTO.getDepId());
-        job.setTitle(jobDTO.getTitle());
-        return job;
+    public static JobDto jobToDto(Optional<Job> job) {
+        return new JobDto(job.get().getId(),
+                job.get().getDepId(),
+                job.get().getTitle(),
+                job.get().getDescription());
     }
 }

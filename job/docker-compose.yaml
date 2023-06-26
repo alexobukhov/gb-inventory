@@ -1,26 +1,12 @@
-version: '3.8'
-services:
-  postgres:
-    container_name: job
-    image: postgres:15.3
-    environment:
-      - POSTGRES_DB=job
-      - POSTGRES_USER=job_user
-      - POSTGRES_PASSWORD=job_admin
-    ports:
-      - "5483:5432"
-#    networks:
-#      - job-net
-#
-#  test_service:
-#    container_name: example
-#    build:
-#      context: .
-#      dockerfile: ./dockerfile
+#version: '3.8'
+#services:
+#  postgres:
+#    container_name: job
+#    image: postgres:15.3
+#    environment:
+#      - POSTGRES_DB=gb-inventory
+#      - POSTGRES_USER=root
+#      - POSTGRES_PASSWORD=123
 #    ports:
-#      - 8081:8080
-#    networks:
-#      - job-net
-#    restart: always
-#    depends_on:
-#      - postgres
+#      - "5483:5432"
+
