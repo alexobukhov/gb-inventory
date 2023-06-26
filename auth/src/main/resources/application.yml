@@ -20,9 +20,10 @@ spring:
                 - "authorization_code"
                 - "refresh_token"
               redirect-uris:
-                - "http://127.0.0.1:8080/login/oauth2/code/web-client"
+                - "http://127.0.0.1:9000/login/oauth2/code/web-client"
               post-logout-redirect-uris:
-                - "http://127.0.0.1:8080/"
+                - "http://127.0.0.1:9000/authorized"
               scopes:
-                - "profile"
-            require-authorization-consent: true
+                - "admin"
+                - "user"
+              require-authorization-consent: false
