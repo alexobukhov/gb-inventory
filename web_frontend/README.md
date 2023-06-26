@@ -4,7 +4,7 @@
 
 ### npm i axios react-router-dom mobx mobx-react-lite
 
-### npm install react-bootstrap bootstrap
+### npm install react-bootstrap react-bootstrap-icons bootstrap
 
 ### npm i jwt-decode
 
