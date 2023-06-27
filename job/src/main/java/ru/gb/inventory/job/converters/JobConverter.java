@@ -16,10 +16,10 @@ public class JobConverter {
                 job.get().getDescription());
     }
 
-    public static JobDto jobToDto(Optional<Job> job) {
+    /*public static JobDto jobToDto(Optional<Job> job) {
         return new JobDto(job.get().getId(),
                 job.get().getDepId(),
                 job.get().getTitle(),
                 job.get().getDescription());
-    }
+    }*/
 }

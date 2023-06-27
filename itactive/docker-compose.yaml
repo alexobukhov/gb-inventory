@@ -16,7 +16,7 @@
 #    container_name: example
 #    build:
 #      context: .
-#      dockerfile: ./dockerfile
+#      Dockerfile: ./Dockerfile
 #    ports:
 #      - 8081:8080
 #    networks:
