@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.8'
 services:
 
   gateway:
@@ -19,7 +19,7 @@ services:
     container_name: web_frontend
     build:
       context: .
-      dockerfile: ./web_frontend/dockerfile
+      dockerfile: web/dockerfile
     ports:
       - "5000:5000"
     volumes:
@@ -29,12 +29,6 @@ services:
     tty: true
     depends_on:
       - auth-service
-      - department-service
-      - discovery
-      - itactive-service
-      - job-service
-      - order-service
-      - user-service
     networks:
       - gb-inventory-net
 
@@ -72,15 +66,15 @@ services:
       - "-c"
       - "pg_stat_statements.track=all"
     environment:
-      POSTGRES_DB: postgresql-db
+      POSTGRES_DB: departments
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123
 
     volumes:
         - ../2. Init Database:/docker-entrypoint-initdb.d
-        - postgresql-db-data:/var/lib/postgresql/data
+        - .:/var/lib/postgresql/data
     ports:
-      - "5435:5432"
+      - "5432:5432"
     restart: unless-stopped
     deploy:
       resources:

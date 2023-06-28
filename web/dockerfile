@@ -5,6 +5,6 @@ RUN npm i axios react-router-dom mobx mobx-react-lite\
     && npm install react-bootstrap bootstrap\
     && npm i jwt-decode\
     && npm run build
-COPY . .
+COPY ../web_frontend .
 EXPOSE 5000
 CMD ["npm", "start"]
