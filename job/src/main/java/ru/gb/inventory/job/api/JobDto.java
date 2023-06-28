@@ -9,7 +9,7 @@ public class JobDto {
 
     Long id;
     Long depId;
-    String title;
+    String name;
     String description;
 
 }
