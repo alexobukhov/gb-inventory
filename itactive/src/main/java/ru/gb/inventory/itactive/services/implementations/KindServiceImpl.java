@@ -3,7 +3,7 @@ package ru.gb.inventory.itactive.services.implementations;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.gb.inventory.itactive.dto.KindDto;
-import ru.gb.inventory.itactive.entities.Kind;
+import ru.gb.inventory.itactive.entities.Type;
 import ru.gb.inventory.itactive.repositories.KindRepository;
 import ru.gb.inventory.itactive.services.KindService;
 
@@ -17,19 +17,19 @@ public class KindServiceImpl implements KindService {
     private final KindRepository kindRepository;
 
     @Override
-    public List<Kind> findAll() {
+    public List<Type> findAll() {
         return kindRepository.findAll();
     }
 
     @Override
     public void addNewKind(KindDto kindDto) {
-        Kind kind = new Kind();
-        kind.setTitle(kindDto.getTitle());
-        kindRepository.save(kind);
+        Type type = new Type();
+        type.setTitle(kindDto.getTitle());
+        kindRepository.save(type);
     }
 
     @Override
-    public Optional<Kind> findById(Long id) {
+    public Optional<Type> findById(Long id) {
         return kindRepository.findById(id);
     }
 

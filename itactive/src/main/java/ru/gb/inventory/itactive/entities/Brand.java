@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Kinds")
+@Table(name = "Brands")
 @NoArgsConstructor
 @Data
-public class Kind {
+public class Brand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,6 @@ public class Kind {
     private String title;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "kind")
-    private List<ItActive> itActives;
-
+    @OneToMany(mappedBy = "brand")
+    private List<Device> devices;
 }

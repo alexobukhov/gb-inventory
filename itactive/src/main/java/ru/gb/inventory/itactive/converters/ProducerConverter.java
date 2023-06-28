@@ -2,18 +2,18 @@ package ru.gb.inventory.itactive.converters;
 
 import org.springframework.stereotype.Component;
 import ru.gb.inventory.itactive.dto.ProducerDto;
-import ru.gb.inventory.itactive.entities.Producer;
+import ru.gb.inventory.itactive.entities.Brand;
 
 @Component
 public class ProducerConverter {
 
-    public ProducerDto entityToDto(Producer producer) {
-        return new ProducerDto(producer.getId(), producer.getTitle());
+    public ProducerDto entityToDto(Brand brand) {
+        return new ProducerDto(brand.getId(), brand.getTitle());
     }
-    public Producer dtoToEntity(ProducerDto producerDto) {
-        Producer producer = new Producer();
-        producer.setId(producerDto.getId());
-        producer.setTitle(producerDto.getTitle());
-        return producer;
+    public Brand dtoToEntity(ProducerDto producerDto) {
+        Brand brand = new Brand();
+        brand.setId(producerDto.getId());
+        brand.setTitle(producerDto.getTitle());
+        return brand;
     }
 }

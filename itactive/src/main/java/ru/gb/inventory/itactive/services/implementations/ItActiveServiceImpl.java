@@ -9,7 +9,7 @@ import ru.gb.inventory.itactive.dto.ConditionDto;
 import ru.gb.inventory.itactive.dto.ItActiveDto;
 import ru.gb.inventory.itactive.dto.KindDto;
 import ru.gb.inventory.itactive.dto.ProducerDto;
-import ru.gb.inventory.itactive.entities.ItActive;
+import ru.gb.inventory.itactive.entities.Device;
 import ru.gb.inventory.itactive.exceptions.ResourceNotFoundException;
 import ru.gb.inventory.itactive.repositories.ItActiveRepository;
 import ru.gb.inventory.itactive.services.ItActiveService;
@@ -33,87 +33,87 @@ public class ItActiveServiceImpl implements ItActiveService {
 
     @Override
     public void addNewItActive(ItActiveDto itActiveDto) {
-        ItActive itActive = new ItActive();
-        itActive.setOwnerId(itActiveDto.getOwner().getId());
-        itActive.setKind(itActiveDto.getKind());
-        itActive.setProducer(itActiveDto.getProducer());
-        itActive.setModel(itActiveDto.getModel());
-        itActive.setSerialNumber(itActiveDto.getSerialNumber());
-        itActive.setCondition(itActiveDto.getCondition());
-        itActive.setDescription(itActiveDto.getDescription());
+        Device device = new Device();
+        device.setOwnerId(itActiveDto.getOwner().getId());
+        device.setType(itActiveDto.getType());
+        device.setBrand(itActiveDto.getBrand());
+        device.setModel(itActiveDto.getModel());
+        device.setSerialNumber(itActiveDto.getSerialNumber());
+        device.setCondition(itActiveDto.getCondition());
+        device.setDescription(itActiveDto.getDescription());
     }
 
     @Override
     public void changeCondition(Long id, ConditionDto conditionDto) {
-        ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
-        itActive.setCondition(conditionConverter.dtoToEntity(conditionDto));
+        Device device = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
+        device.setCondition(conditionConverter.dtoToEntity(conditionDto));
     }
 
     @Override
     public void changeDescription(Long id, String description) {
-        ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
-        itActive.setDescription(description);
+        Device device = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
+        device.setDescription(description);
     }
 
     @Override
     public void changeOwner(Long id, Long ownerId) {
-        ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
-        itActive.setOwnerId(ownerId);
+        Device device = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
+        device.setOwnerId(ownerId);
 
     }
 
     @Override
     public void changeKind(Long id, KindDto kindDto) {
-        ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
-        itActive.setKind(kindConverter.dtoToEntity(kindDto));
+        Device device = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
+        device.setType(kindConverter.dtoToEntity(kindDto));
     }
 
     @Override
     public void changeProducer(Long id, ProducerDto producerDto) {
-        ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
-        itActive.setProducer(producerConverter.dtoToEntity(producerDto));
+        Device device = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
+        device.setBrand(producerConverter.dtoToEntity(producerDto));
     }
 
     @Override
     public void changeModel(Long id, String model) {
-        ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
-        itActive.setModel(model);
+        Device device = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
+        device.setModel(model);
     }
 
     @Override
     public void changeSerialNumber(Long id, String serialNumber) {
-        ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
-        itActive.setSerialNumber(serialNumber);
+        Device device = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
+        device.setSerialNumber(serialNumber);
     }
 
     @Override
     public void changeInventoryNumber(Long id, String inventoryNumber) {
-        ItActive itActive = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
-        itActive.setInventoryNumber(inventoryNumber);
+        Device device = itActiveRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ItActive with Id " + id + " not found"));
+        device.setInventoryNumber(inventoryNumber);
     }
 
     @Override
-    public List<ItActive> findAll() {
+    public List<Device> findAll() {
         return itActiveRepository.findAll();
     }
 
     @Override
-    public Optional<ItActive> findById(Long id) {
+    public Optional<Device> findById(Long id) {
         return itActiveRepository.findById(id);
     }
 
     @Override
-    public Optional<ItActive> findBySerialNumber(String serialNumber) {
+    public Optional<Device> findBySerialNumber(String serialNumber) {
         return itActiveRepository.findBySerialNumber(serialNumber);
     }
 
     @Override
-    public Optional<ItActive> findByInventoryNumber(String inventoryNumber) {
+    public Optional<Device> findByInventoryNumber(String inventoryNumber) {
         return itActiveRepository.findByInventoryNumber(inventoryNumber);
     }
 
     @Override
-    public List<ItActive> findAllByOwner(Long ownerId) {
+    public List<Device> findAllByOwner(Long ownerId) {
         return itActiveRepository.findAllByOwnerId(ownerId);
     }
 }

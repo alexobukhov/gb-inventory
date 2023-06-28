@@ -10,10 +10,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "actives")
+@Table(name = "devices")
 @NoArgsConstructor
 @Data
-public class ItActive {
+public class Device {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +22,13 @@ public class ItActive {
 
     @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name = "kind_id")
-    private Kind kind;
+    @JoinColumn(name = "type_id")
+    private Type type;
 
     @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name = "producer_id")
-    private Producer producer;
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
 
     @JsonManagedReference
     @ManyToOne
