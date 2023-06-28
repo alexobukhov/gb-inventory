@@ -1,13 +1,21 @@
-import React from 'react';
-import NavbarAdmin from "./UI/Navbar/NavbarAdmin";
+import React, {useContext} from 'react';
+import {observer} from "mobx-react-lite";
+import {Context} from "../index";
+import MyButton from "./UI/MyButton/MyButton";
 
-const UserProfile = () => {
+const UserProfile = observer(() => {
+    const {user, device} = useContext(Context)
+
+    console.log(user)
     return (
+
         <div>
-            <NavbarAdmin/>
+
             Страница usera
+
+            <MyButton>Добавить в заказ</MyButton>
         </div>
     );
-};
+});
 
 export default UserProfile;

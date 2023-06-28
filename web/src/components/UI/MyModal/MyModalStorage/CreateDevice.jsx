@@ -12,13 +12,14 @@ const CreateDevice = observer(({show, onHide}) => {
     const {device} = useContext(Context)
     const [info, setInfo] = useState([])
     const [name, setName] = useState('')
-    const [useCount, setUseCount] = useState(0)
+    const [useCount, setUseCount] = useState(1)
     const [file, setFile] = useState(null)
 
     useEffect(() => {
         fetchTypes().then(data => device.setTypes(data))
         fetchBrands().then(data => device.setBrands(data))
         fetchConditions().then(data => device.setConditions(data))
+
     }, [])
 
     const addInfo = (e) => {
@@ -38,14 +39,18 @@ const CreateDevice = observer(({show, onHide}) => {
 
     const addDevice = () => {
         const formData = new FormData()
-        formData.append('name', name)
-        formData.append('count', `${useCount}`)
-        formData.append('img', file)
-        formData.append('BrandId', device.selectedBrand.id)
-        formData.append('TypeId', device.selectedType.id)
-        formData.append('ConditionId', device.selectedCondition.id)
-        formData.append('info', JSON.stringify(info))
-        createDevice(formData).then(data => onHide())
+        try {
+            formData.append('name', name)
+            formData.append('count', `${useCount}`)
+            formData.append('img', file)
+            formData.append('BrandId', device.selectedBrand.id)
+            formData.append('TypeId', device.selectedType.id)
+            formData.append('ConditionId', device.selectedCondition.id)
+            formData.append('info', JSON.stringify(info))
+            createDevice(formData).then(data => onHide())
+        } catch (e) {
+            alert(e)
+        }
     }
 
     return (
@@ -55,9 +60,9 @@ const CreateDevice = observer(({show, onHide}) => {
                size="lg"
                centered
         >
-            <Modal.Title>
-                Добавить устройство
-            </Modal.Title>
+            {/*<Modal.Title>*/}
+            {/*    Добавить устройство*/}
+            {/*</Modal.Title>*/}
 
             <Form className={cl.modal} style={{padding: 40}}>
                 <Dropdown className={cl.modal__dropdown}>

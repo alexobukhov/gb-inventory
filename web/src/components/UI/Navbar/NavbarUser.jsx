@@ -17,6 +17,7 @@ const NavbarAdmin = observer(() => {
         localStorage.removeItem('token')
     }
 
+
     return (
         <div className={cl.navbar}>
             {user.isAuth ?
@@ -33,7 +34,7 @@ const NavbarAdmin = observer(() => {
                 </Nav>
                 :
                 <Nav>
-                    <Button onClick={() => navigate(USER_ROUTE)}>Авторизация</Button>
+                    <Button onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
                 </Nav>
             }
         </div>

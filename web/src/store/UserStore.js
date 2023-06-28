@@ -9,7 +9,8 @@ export default class UserStore {
                 lastname: 'Иванов',
                 middlename: 'Иванович',
                 grade: 1,
-                email: 'ivanov@email.com'
+                email: 'ivanov@email.com',
+                role: 'Admin'
             },
             {
                 id: 2,
@@ -17,7 +18,8 @@ export default class UserStore {
                 lastname: 'Петров',
                 middlename: 'Петрович',
                 grade: 3,
-                email: 'petrov@email.com'
+                email: 'petrov@email.com',
+                role: 'Storage'
             },
             {
                 id: 3,
@@ -25,7 +27,8 @@ export default class UserStore {
                 lastname: 'Пупкин',
                 middlename: 'Александрович',
                 grade: 2,
-                email: 'pupkin@email.com'
+                email: 'pupkin@email.com',
+                role: 'User'
             },
             {
                 id: 4,
@@ -33,12 +36,13 @@ export default class UserStore {
                 lastname: 'Сидоров',
                 middlename: 'Сергеевич',
                 grade: 1,
-                email: 'sidorov@email.com'
+                email: 'sidorov@email.com',
+                role: 'User'
             },
 
         ]
 
-        this._departments = [
+        this._jobs = [
             {id: 1, name: 'Водитель'},
             {id: 2, name: 'Кладовщик'},
             {id: 3, name: 'Мастер участка'},
@@ -47,13 +51,15 @@ export default class UserStore {
 
         ]
 
-        this._jobs = [
+        this._departments = [
             {id: 1, name: 'Транспортный цех'},
             {id: 2, name: 'Инструментальный цех'},
             {id: 3, name: 'Модельный цех'},
             {id: 3, name: 'Инженерный цех'},
         ]
         this._isAuth = true
+        this._isAdmin = true
+        this._isStorage = true
         this._selectedDepartment = {}
         this._selectedJob = {}
         makeAutoObservable(this)
@@ -65,6 +71,14 @@ export default class UserStore {
 
     setUsers(users) {
         this._users = users
+    }
+
+    setIsAdmin(admin) {
+        this._isAdmin = admin
+    }
+
+    setIsStorage(storage) {
+        this._isStorage = storage
     }
 
     setDepartments(departments) {
@@ -90,6 +104,14 @@ export default class UserStore {
 
     get users() {
         return this._users
+    }
+
+    get isAdmin() {
+        return this._isAdmin
+    }
+
+    get isStorage() {
+        return this._isStorage
     }
 
     get departments() {
