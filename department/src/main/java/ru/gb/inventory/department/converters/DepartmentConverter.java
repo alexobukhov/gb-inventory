@@ -3,7 +3,6 @@ package ru.gb.inventory.department.converters;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.gb.inventory.department.api.DepartmentDto;
-import ru.gb.inventory.department.api.ResourceNotFoundException;
 import ru.gb.inventory.department.entyties.Department;
 
 @Component
@@ -11,13 +10,13 @@ import ru.gb.inventory.department.entyties.Department;
 public class DepartmentConverter {
 
     public DepartmentDto entityToDto(Department department){
-        return new DepartmentDto(department.getId(), department.getTitle());
+        return new DepartmentDto(department.getId(), department.getName());
     }
 
     public Department dtoToEntity(DepartmentDto departmentDto){
         Department department = new Department();
         department.setId(departmentDto.getId());
-        department.setTitle(departmentDto.getTitle());
+        department.setName(departmentDto.getName());
         return department;
     }
 }
