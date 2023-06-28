@@ -72,7 +72,7 @@ services:
 
     volumes:
         - ./2. Init Database:/docker-entrypoint-initdb.d
-        - .:/var/lib/postgresql/data
+        - .:/var/lib/postgresql/data2
     ports:
       - "5432:5432"
     restart: unless-stopped
