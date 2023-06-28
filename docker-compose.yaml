@@ -15,22 +15,22 @@ services:
     restart: always
 
 
-  web_frontend:
-    container_name: web_frontend
-    build:
-      context: .
-      dockerfile: web/dockerfile
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./web_frontend/frontend:/app
-      - ./app/node_modules
-    stdin_open: true
-    tty: true
-    depends_on:
-      - auth-service
-    networks:
-      - gb-inventory-net
+  #web:
+  #  container_name: web
+  #  build:
+  #    context: .
+  #    dockerfile: web/dockerfile
+  #  ports:
+  #    - "5000:5000"
+  #  volumes:
+  #    - ./web:/app
+  #    - ./app/node_modules
+  #  stdin_open: true
+  #  tty: true
+  #  depends_on:
+  #    - auth-service
+  #  networks:
+  #    - gb-inventory-net
 
   postgres:
     container_name: postgresql-db
@@ -66,12 +66,12 @@ services:
       - "-c"
       - "pg_stat_statements.track=all"
     environment:
-      POSTGRES_DB: departments
+      POSTGRES_DB: postgresql-db-project
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123
 
     volumes:
-        - ../2. Init Database:/docker-entrypoint-initdb.d
+        - ../2.Init Database:/docker-entrypoint-initdb.d
         - .:/var/lib/postgresql/data
     ports:
       - "5432:5432"

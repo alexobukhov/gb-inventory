@@ -5,7 +5,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/gb-inventory
+    url: jdbc:postgresql://localhost:5432/jobs
     driver-class-name: org.postgresql.Driver
     username: root
     password: 123

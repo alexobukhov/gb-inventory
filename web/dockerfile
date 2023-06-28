@@ -1,10 +1,10 @@
 FROM node:18.16.0
-WORKDIR ./web_frontend
-COPY ./web_frontend/frontend/package.json .
+WORKDIR ./web
+COPY ./web/package.json .
 RUN npm i axios react-router-dom mobx mobx-react-lite\
     && npm install react-bootstrap bootstrap\
     && npm i jwt-decode\
     && npm run build
-COPY ../web_frontend .
+COPY ../web .
 EXPOSE 5000
 CMD ["npm", "start"]
