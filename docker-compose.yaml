@@ -15,22 +15,22 @@ services:
     restart: always
 
 
-  #web:
-  #  container_name: web
-  #  build:
-  #    context: .
-  #    dockerfile: web/dockerfile
-  #  ports:
-  #    - "5000:5000"
-  #  volumes:
-  #    - ./web:/app
-  #    - ./app/node_modules
-  #  stdin_open: true
-  #  tty: true
-  #  depends_on:
-  #    - auth-service
-  #  networks:
-  #    - gb-inventory-net
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: web/dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./web:/app
+      - ./app/node_modules
+    stdin_open: true
+    tty: true
+    depends_on:
+      - auth-service
+    networks:
+      - gb-inventory-net
 
   postgres:
     container_name: postgresql-db

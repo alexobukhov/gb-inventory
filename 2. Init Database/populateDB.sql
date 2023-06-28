@@ -1,9 +1,14 @@
-insert into users (firstName,lastName, middleName, grade, job_id, department_id, email)
-values ('Богданов', 'Леонтий', 'Евгеньевич', 1, 1, 1, 'BogdanovLE@gmail.com'),
+INSERT INTO users (firstName,lastName, middleName, grade, job_id, department_id, email)
+VALUES ('Богданов', 'Леонтий', 'Евгеньевич', 1, 1, 1, 'BogdanovLE@gmail.com'),
        ('Фадеев', 'Анатолий', 'Донатович', 2, 2, 2, 'FadeevAD@gmail.com'),
        ('Устинов', 'Нинель', 'Романович', 3, 2, 1, 'UstinovYR@gmail.com'),
        ('Лихачев', 'Донат', 'Арьемович', 4, 2, 2, 'LixachevDA@gmail.com'),
-       ('Комиссаров', 'Захар', 'Агафонович', 5, 2, 2, 'KomissarovZA@gmail.com');
+       ('Комиссаров', 'Захар', 'Агафонович', 5, 2, 2, 'KomissarovZA@gmail.com'),
+       ('Савина', 'Адельфина', 'Ивановна', 6, 2, 1, 'SavinaAI@gmail.com'),
+       ('Максимова', 'Николь', 'Арсеньева', 7, 2, 1, 'MaximovaNA@gmail.com'),
+       ('Громова', 'Нора', 'Еремеевна', 8, 2, 2, 'GromovaNE@gmail.com'),
+       ('Ситникова', 'Злата', 'Валерьевна', 9, 2, 1, 'SitnikovaZV@gmail.com'),
+       ('Третьякова', 'Земфира', 'Максовна', 10, 2, 2, 'TretyakovaZM@gmail.com');
 
 
 INSERT INTO departments (title)
@@ -12,8 +17,8 @@ VALUES ('Administrative department'),
        ('Finance department'),
        ('HR department');
 
-insert into producers (title)
-values ('Huawei'),
+INSERT INTO producers (title)
+VALUES ('Huawei'),
        ('LG'),
        ('DELL'),
        ('HP'),
@@ -21,13 +26,13 @@ values ('Huawei'),
        ('Compit'),
        ('Apple');
 
-insert into conditions (title)
-values ('New'),
+INSERT INTO conditions (title)
+VALUES ('New'),
        ('Used'),
        ('Defective');
 
-insert into kinds (title)
-values ('Системный блок'),
+INSERT INTO kinds (title)
+VALUES ('Системный блок'),
        ('Ноутбук'),
        ('Планшет'),
        ('Монитор'),
@@ -36,11 +41,11 @@ values ('Системный блок'),
        ('Мышь'),
        ('Аудиогарнитура');
 
-insert into actives (owner_Id, kind_id, producer_id, model, serial_number, condition_id)
-values (1, 1, 1, 'AAA', '001', 1);
+INSERT INTO actives (owner_Id, kind_id, producer_id, model, serial_number, condition_id)
+VALUES (1, 1, 1, 'AAA', '001', 1);
 
-insert into jobs (dep_id, title, description)
-values
+INSERT INTO jobs (dep_id, title, description)
+VALUES
     (0, 'Администратор', 'Администратор системы'),
     (1, 'Распределитель', 'Работник склада ИТ'),
     (2, 'Директор', 'Директор предприятия'),
@@ -49,15 +54,14 @@ values
     (5, 'Техник', 'Техник отдела АСУ'),
     (6, 'Нач. ОК', 'Начальник отдела кадров');
 
-insert into orders (user_id)
-values (1),
+INSERT INTO orders (user_id)
+VALUES (1),
        (2),
        (3);
 
-insert into orders_items (order_id, active_id, created_at, updated_at)
-values (1, 1),
+INSERT INTO orders_items (order_id, active_id, created_at, updated_at)
+VALUES (1, 1),
        (1, 2),
        (2, 3),
        (2, 4),
        (3, 5);
-
