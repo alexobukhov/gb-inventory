@@ -3,7 +3,7 @@ package ru.gb.inventory.itactive.converters;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.gb.inventory.itactive.dto.ItActiveDto;
-import ru.gb.inventory.itactive.entities.ItActive;
+import ru.gb.inventory.itactive.entities.Device;
 import ru.gb.inventory.itactive.integrations.UserServiceIntegration;
 
 @Component
@@ -12,33 +12,33 @@ public class ItActiveConverter {
 
     private final UserServiceIntegration userServiceIntegration;
 
-    public ItActiveDto entityToDto(ItActive itActive) {
+    public ItActiveDto entityToDto(Device device) {
        return new ItActiveDto(
-               itActive.getId(),
-               userServiceIntegration.findUserById(itActive.getOwnerId()),
-               itActive.getKind(),
-               itActive.getProducer(),
-               itActive.getModel(),
-               itActive.getSerialNumber(),
-               itActive.getInventoryNumber(),
-               itActive.getCondition(),
-               itActive.getDescription()
+               device.getId(),
+               userServiceIntegration.findUserById(device.getOwnerId()),
+               device.getType(),
+               device.getBrand(),
+               device.getModel(),
+               device.getSerialNumber(),
+               device.getInventoryNumber(),
+               device.getCondition(),
+               device.getDescription()
        );
 
     }
 
-    public ItActive dtoToEntity(ItActiveDto itActiveDto) {
-        ItActive itActive = new ItActive();
-        itActive.setId(itActiveDto.getId());
-        itActive.setOwnerId(itActiveDto.getOwner().getId());
-        itActive.setKind(itActiveDto.getKind());
-        itActive.setProducer(itActiveDto.getProducer());
-        itActive.setModel(itActiveDto.getModel());
-        itActive.setSerialNumber(itActiveDto.getSerialNumber());
-        itActive.setInventoryNumber(itActiveDto.getInventoryNumber());
-        itActive.setCondition(itActiveDto.getCondition());
-        itActive.setDescription(itActiveDto.getDescription());
-        return itActive;
+    public Device dtoToEntity(ItActiveDto itActiveDto) {
+        Device device = new Device();
+        device.setId(itActiveDto.getId());
+        device.setOwnerId(itActiveDto.getOwner().getId());
+        device.setType(itActiveDto.getType());
+        device.setBrand(itActiveDto.getBrand());
+        device.setModel(itActiveDto.getModel());
+        device.setSerialNumber(itActiveDto.getSerialNumber());
+        device.setInventoryNumber(itActiveDto.getInventoryNumber());
+        device.setCondition(itActiveDto.getCondition());
+        device.setDescription(itActiveDto.getDescription());
+        return device;
     }
 
 }

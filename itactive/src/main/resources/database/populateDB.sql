@@ -1,6 +1,4 @@
-
-
-insert into producers (title)
+insert into brands (title)
 values ('Huawei'),
        ('LG'),
        ('DELL'),
@@ -14,7 +12,7 @@ values ('New'),
        ('Used'),
        ('Defective');
 
-insert into kinds (title)
+insert into types (title)
 values ('Системный блок'),
        ('Ноутбук'),
        ('Планшет'),
@@ -24,5 +22,5 @@ values ('Системный блок'),
        ('Мышь'),
        ('Аудиогарнитура');
 
-insert into actives (owner_Id, kind_id, producer_id, model, serial_number, condition_id)
+insert into devices (owner_Id, kind_id, producer_id, model, serial_number, condition_id)
 values (1, 1, 1, 'AAA', '001', 1);

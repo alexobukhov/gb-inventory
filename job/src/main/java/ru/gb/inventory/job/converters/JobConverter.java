@@ -9,11 +9,13 @@ import java.util.Optional;
 @Component
 public class JobConverter {
 
-    public static JobDto jobToDto(Optional<Job> job) {
-        return new JobDto(job.get().getId(),
-                job.get().getDepId(),
-                job.get().getTitle(),
-                job.get().getDescription());
+    public static Job dtoToJob(JobDto jobDto) {
+        Job job = new Job();
+        job.setId(jobDto.getId());
+        job.setDepId(jobDto.getDepId());
+        job.setTitle(jobDto.getName());
+        job.setDescription(job.getDescription());
+        return job;
     }
 
     /*public static JobDto jobToDto(Optional<Job> job) {

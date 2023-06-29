@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 public class JobServiceImpl implements JobService {
 
     private final JobRepository jobRepository;
-    private final JobConverter jobConverter;
 
     @Override
     public List<JobDto> findAll() {
@@ -27,24 +26,21 @@ public class JobServiceImpl implements JobService {
                 .collect(Collectors.toList());
     }
 
-    public List<JobDto> findAllByDepId(Long id) {
-        return jobRepository.findAllByDepId()
-                .stream()
-                .map((Job job) -> JobConverter.jobToDto(Optional.ofNullable(job)))
-                .collect(Collectors.toList());
-    }
+//    public List<JobDto> findAllByDepId(Long id) {
+//        return jobRepository.findAllByDepId()
+//                .stream()
+//                .map((Job job) -> JobConverter.jobToDto(Optional.ofNullable(job)))
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public Optional<JobDto> findById(Long id) {
-        return Optional.ofNullable(jobConverter.jobToDto(jobRepository.findById(id)));
+        return Optional.ofNullable(JobConverter.jobToDto(jobRepository.findById(id)));
     }
 
     @Override
     public void addNewJob(JobDto jobDto) {
-        Job job = new Job();
-        job.setTitle(jobDto.getTitle());
-        job.setDepId(jobDto.getDepId());
-        job.setDescription(jobDto.getDescription());
+        Job job = JobConverter.dtoToJob(jobDto);
         jobRepository.save(job);
     }
 

@@ -4,7 +4,7 @@ import ru.gb.inventory.itactive.dto.ConditionDto;
 import ru.gb.inventory.itactive.dto.ItActiveDto;
 import ru.gb.inventory.itactive.dto.KindDto;
 import ru.gb.inventory.itactive.dto.ProducerDto;
-import ru.gb.inventory.itactive.entities.ItActive;
+import ru.gb.inventory.itactive.entities.Device;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,15 +31,15 @@ public interface ItActiveService {
 
     void changeInventoryNumber(Long id, String inventoryNumber);
 
-    List<ItActive> findAll();
+    List<Device> findAll();
 
-    Optional<ItActive> findById(Long id);
+    Optional<Device> findById(Long id);
 
-    Optional<ItActive> findBySerialNumber(String serialNumber);
+    Optional<Device> findBySerialNumber(String serialNumber);
 
-    Optional<ItActive> findByInventoryNumber(String inventoryNumber);
+    Optional<Device> findByInventoryNumber(String inventoryNumber);
 
-    List<ItActive> findAllByOwner(Long ownerId);
+    List<Device> findAllByOwner(Long ownerId);
 
 
 }

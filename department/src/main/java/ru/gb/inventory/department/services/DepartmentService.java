@@ -46,7 +46,7 @@ public class DepartmentService {
 
     public Department createNewDepartment(DepartmentDto departmentDto){
         Department department = new Department();
-        department.setTitle(departmentDto.getTitle());
+        department.setName(departmentDto.getName());
         departmentRepository.save(department);
         return department;
     }
@@ -58,6 +58,6 @@ public class DepartmentService {
     @Transactional
     public void updateDepartmentFromDto(DepartmentDto departmentDto){
         Department department = findById(departmentDto.getId()).orElseThrow(() -> new ResourceNotFoundException("Department id: " + departmentDto.getId() + " not found"));
-        department.setTitle(departmentDto.getTitle());
+        department.setName(departmentDto.getName());
     }
 }

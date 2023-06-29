@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.gb.inventory.itactive.entities.Condition;
-import ru.gb.inventory.itactive.entities.Kind;
-import ru.gb.inventory.itactive.entities.Producer;
+import ru.gb.inventory.itactive.entities.Type;
+import ru.gb.inventory.itactive.entities.Brand;
 
 @Data
 @NoArgsConstructor
@@ -16,9 +16,9 @@ public class ItActiveDto {
 
     private UserDto owner;
 
-    private Kind kind;
+    private Type type;
 
-    private Producer producer;
+    private Brand brand;
 
     private String model;
 
