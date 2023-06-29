@@ -26,10 +26,10 @@ public class JobController {
         return jobService.findById(id);
     }
 
-    @GetMapping("/dep/{id}")
-    public List<JobDto> findByDepId(@PathVariable Long id){
-        return jobService.findAllByDepId(id);
-    }
+//    @GetMapping("/dep/{id}")
+//    public List<JobDto> findByDepId(@PathVariable Long id){
+//        return jobService.findAllByDepId(id);
+//    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,9 +42,9 @@ public class JobController {
         jobService.deleteById(id);
     }
 
-    @GetMapping("/dep/{id}")
-    public List<JobDto> findByDepId(@PathVariable Long id) {
-        return jobService.findAllByDepId(id);
-    }
+//    @GetMapping("/dep/{id}")
+//    public List<JobDto> findOnDepId(@PathVariable Long id) {
+//        return jobService.findAllByDepId(id);
+//    }
 
 }
