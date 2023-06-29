@@ -1,24 +1,36 @@
-version: '3.3'
+version: '3.8'
 services:
 
   gateway:
     container_name: gateway
     build:
       context: .
-      dockerfile: ./apigateway/dockerfile
+      dockerfile: ./apigateway/Dockerfile
     ports:
       - "8080:8080"
+    depends_on:
+      - postgres
     networks:
       - gb-inventory-net
     restart: always
 
-  #web:
-  #  container_name: web_service
-  #  build:
-  #    context: .
-  #    dockerfile: ./web/dockerfile
-  #  networks:
-  #    - gb-inventory-net
+
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: web/dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./web:/app
+      - ./app/node_modules
+    stdin_open: true
+    tty: true
+    depends_on:
+      - auth-service
+    networks:
+      - gb-inventory-net
 
   postgres:
     container_name: postgresql-db
@@ -54,15 +66,15 @@ services:
       - "-c"
       - "pg_stat_statements.track=all"
     environment:
-      POSTGRES_DB: postgresql-db
+      POSTGRES_DB: postgresql-db-project
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123
 
     volumes:
-        - ../2. Init Database:/docker-entrypoint-initdb.d
-        - postgresql-db-data:/var/lib/postgresql/data
+        - ./2. Init Database:/docker-entrypoint-initdb.d
+        - .:/var/lib/postgresql/data2
     ports:
-      - "5435:5432"
+      - "5432:5432"
     restart: unless-stopped
     deploy:
       resources:
@@ -96,9 +108,11 @@ services:
     container_name: auth
     build:
       context: .
-      dockerfile: ./auth/dockerfile
+      dockerfile: ./auth/Dockerfile
     ports:
       - "9000:9000"
+    depends_on:
+      - postgres
     networks:
       - gb-inventory-net
     restart: always
@@ -108,7 +122,9 @@ services:
      container_name: eureka
      build:
        context: .
-       dockerfile: ./discovery/dockerfile
+       dockerfile: ./discovery/Dockerfile
+     depends_on:
+       - postgres
      networks:
        - gb-inventory-net
      restart: always
@@ -119,9 +135,11 @@ services:
     container_name: department
     build:
       context: .
-      dockerfile: ./department/dockerfile
+      dockerfile: ./department/Dockerfile
     ports:
       - "8081:8081"
+    depends_on:
+      - postgres
     networks:
       - gb-inventory-net
     restart: always
@@ -131,9 +149,11 @@ services:
     container_name: itactive
     build:
       context: .
-      dockerfile: ./itactive/dockerfile
+      dockerfile: ./itactive/Dockerfile
     ports:
       - "8082:8082"
+    depends_on:
+      - postgres
     networks:
       - gb-inventory-net
     restart: always
@@ -143,9 +163,11 @@ services:
     container_name: job
     build:
       context: .
-      dockerfile: ./job/dockerfile
+      dockerfile: ./job/Dockerfile
     ports:
       - "8083:8083"
+    depends_on:
+      - postgres
     networks:
       - gb-inventory-net
     restart: always
@@ -155,9 +177,11 @@ services:
     container_name: order
     build:
       context: .
-      dockerfile: ./order/dockerfile
+      dockerfile: ./order/Dockerfile
     ports:
       - "8084:8084"
+    depends_on:
+      - postgres
     networks:
       - gb-inventory-net
     restart: always
@@ -167,9 +191,11 @@ services:
     container_name: user
     build:
       context: .
-      dockerfile: ./user/dockerfile
+      dockerfile: ./user/Dockerfile
     ports:
       - "8085:8085"
+    depends_on:
+      - postgres
     networks:
       - gb-inventory-net
     restart: always

@@ -46,5 +46,4 @@ public class JobController {
 //    public List<JobDto> findOnDepId(@PathVariable Long id) {
 //        return jobService.findAllByDepId(id);
 //    }
-
 }
