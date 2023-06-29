@@ -2,16 +2,16 @@ package ru.gb.inventory.itactive.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import ru.gb.inventory.itactive.entities.ItActive;
+import ru.gb.inventory.itactive.entities.Device;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ItActiveRepository extends JpaRepository<ItActive, Long>, JpaSpecificationExecutor<ItActive> {
+public interface ItActiveRepository extends JpaRepository<Device, Long>, JpaSpecificationExecutor<Device> {
 
-    Optional<ItActive> findBySerialNumber(String serialNumber);
+    Optional<Device> findBySerialNumber(String serialNumber);
 
-    Optional<ItActive> findByInventoryNumber(String inventoryNumber);
+    Optional<Device> findByInventoryNumber(String inventoryNumber);
 
-    List<ItActive> findAllByOwnerId(Long ownerId);
+    List<Device> findAllByOwnerId(Long ownerId);
 }

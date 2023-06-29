@@ -23,5 +23,5 @@ public class Condition {
 
     @JsonBackReference
     @OneToMany(mappedBy = "condition")
-    private List<ItActive> itActives;
+    private List<Device> devices;
 }
