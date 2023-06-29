@@ -9,6 +9,7 @@ import UserList from "../components/AdminComponent/UserList";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {fetchDepartments, fetchJobs, fetchUsers} from "../http/adminApi";
+import JobBar from "../components/AdminComponent/JobBar";
 
 const Admin = observer(() => {
     const {user} = useContext(Context)
@@ -33,6 +34,7 @@ const Admin = observer(() => {
             <AdminMenu/>
             <Form className={cl.container__device_page}>
                 <Card>
+                    <JobBar/>
                     <DepartmentBar/>
                 </Card>
                 <Card>

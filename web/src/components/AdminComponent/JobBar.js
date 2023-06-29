@@ -1,24 +1,23 @@
 import React, {useContext} from 'react';
 import {observer} from "mobx-react-lite";
-import { Dropdown} from "react-bootstrap";
 import {Context} from "../../index";
-import cl from './JobBar.module.css'
+import cl from "./JobBar.module.css";
+import {Dropdown} from "react-bootstrap";
 
-
-const DepartmentBar = observer(() => {
+const JobBar = observer(() => {
     const {user} = useContext(Context)
 
     return (
         <Dropdown className={cl.dropdown_container}>
             <Dropdown.Toggle
-                className={cl.dropdown_btn}>{user.selectedDepartment.name || 'Выберите отдел'}</Dropdown.Toggle>
+                className={cl.dropdown_btn}>{user.selectedJob.name || 'Выберите должность'}</Dropdown.Toggle>
             <Dropdown.Menu className={cl.dropdown_content}>
-                {user.departments.map(department =>
+                {user.jobs.map(job =>
                     <Dropdown.Item
-                        onClick={() => user.setSelectedDepartment(department)}
-                        key={user.id}
+                        key={job.id}
+                        onClick={() => user.setSelectedJob(job)}
                     >
-                        {department.name}
+                        {job.name}
                     </Dropdown.Item>
                 )}
             </Dropdown.Menu>
@@ -26,4 +25,4 @@ const DepartmentBar = observer(() => {
     );
 });
 
-export default DepartmentBar;
+export default JobBar;
