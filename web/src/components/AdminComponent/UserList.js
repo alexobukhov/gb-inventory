@@ -1,25 +1,30 @@
 import React, {useContext} from 'react';
-import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
-import {Card, Row} from "react-bootstrap";
+import cl from "../DeviceComponent/DeviceItem.module.css";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import UserItem from "./UserItem";
-import MyButton from "../UI/MyButton/MyButton";
 
-
-const UserList = observer(() => {
+const UserList = () => {
     const {user} = useContext(Context)
+    const columns = [
+        {field: 'id', fieldName: '#'},
+        {field: 'name', fieldName: 'Имя'},
+        {field: 'lastname', fieldName: 'Фамилия'},
+        {field: 'middlename', fieldName: 'Отчество'},
+        {field: 'grade', fieldName: 'Ранг'},
+        {field: 'email', fieldName: 'Почта'},
+        {field: 'role', fieldName: 'Роль'},
+    ];
+
+
     return (
-        <Row>
-            {user.users.map(user =>
-                <Card>
-                    <UserItem key={user.id} user={user}/>
+        <div>
+            <form className={cl.content__device_list}>
+                <UserItem columns={columns} rows={user} actions/>
+            </form>
 
-                    <MyButton>Удалить</MyButton>
-                </Card>
-            )}
-
-        </Row>
+        </div>
     );
-});
+};
 
 export default UserList;
