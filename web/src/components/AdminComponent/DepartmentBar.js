@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {observer} from "mobx-react-lite";
 import {Container, Dropdown} from "react-bootstrap";
 import {Context} from "../../index";
-import cl from './JobBar.module.css'
+import cl from './DepartmentBar.module.css'
 
 
 const DepartmentBar = observer(() => {

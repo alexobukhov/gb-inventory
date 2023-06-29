@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Table} from "react-bootstrap";
 import {Context} from "../index";
 
-const Order = ({user, props}) => {
+const Order = (props) => {
     const  {user} = useContext(Context)
 
     return (
