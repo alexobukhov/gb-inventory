@@ -23,4 +23,8 @@ values ('Системный блок'),
        ('Аудиогарнитура');
 
 insert into devices (owner_Id, kind_id, producer_id, model, serial_number, condition_id)
-values (1, 1, 1, 'AAA', '001', 1);
+values (1, 1, 1, 'AAA', '001', 1),
+       (2, 2, 2, 'BBB', '002', 2),
+       (3, 2, 2, 'CCC', '003', 2),
+       (4, 2, 2, 'DDD', '004', 2),
+       (5, 2, 2, 'EEE', '005', 2);
