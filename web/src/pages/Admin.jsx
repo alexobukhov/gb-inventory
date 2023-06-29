@@ -9,7 +9,6 @@ import UserList from "../components/AdminComponent/UserList";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {fetchDepartments, fetchJobs, fetchUsers} from "../http/adminApi";
-import JobBar from "../components/AdminComponent/JobBar";
 
 const Admin = observer(() => {
     const {user} = useContext(Context)
@@ -22,8 +21,8 @@ const Admin = observer(() => {
         })
     }, [])
 
-    useEffect(()=>{
-        fetchUsers(user.selectedJob.id, user.selectedDepartment.id).then(data=>{
+    useEffect(() => {
+        fetchUsers(user.selectedJob.id, user.selectedDepartment.id).then(data => {
             user.setUsers(data.rows)
         })
     }, [user.selectedJob, user.selectedDepartment])
@@ -34,7 +33,6 @@ const Admin = observer(() => {
             <AdminMenu/>
             <Form className={cl.container__device_page}>
                 <Card>
-                    <JobBar/>
                     <DepartmentBar/>
                 </Card>
                 <Card>

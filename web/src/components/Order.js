@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Table} from "react-bootstrap";
+import {Context} from "../index";
 
-const Order = (props) => {
+const Order = ({user, props}) => {
+    const  {user} = useContext(Context)
+
     return (
         <>
             <ul>
@@ -16,8 +19,8 @@ const Order = (props) => {
                 </li>
             </ul>
             <ul>
-                <li>Имя, фамилия: {props.data.name}</li>
-                <li>Адрес почты: {props.data.email}</li>
+                <li>Имя, фамилия: {user.name}{user.lastname}</li>
+                <li>Адрес почты: {user.email}</li>
                 <li>Комментарий: {props.data.comment}</li>
             </ul>
             <Table bordered hover size="sm" className="mt-3">

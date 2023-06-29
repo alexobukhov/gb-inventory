@@ -3,7 +3,7 @@ import {Form, Table} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import {PencilFill, Save, Trash, XSquare} from "react-bootstrap-icons";
 import {Context} from "../../index";
-
+import './UserList.module.css'
 
 const UserItem = observer(({columns, rows, actions}) => {
     const {user} = useContext(Context)

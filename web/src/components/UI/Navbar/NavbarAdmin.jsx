@@ -29,7 +29,7 @@ const NavbarAdmin = observer(() => {
                 </Nav>
                 :
                 <Nav>
-                    <Button onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
+                    <MyButton onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</MyButton>
                 </Nav>
             }
         </div>
